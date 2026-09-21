@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hunarstack Launch Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8fb;--ink:#0d1b2e;--mute:#4a5a70;--card:#fff;--line:#d6dee9;--navy:#0f2747;--amber:#f2a516;--teal:#12a594;--tt:#0b7a6d;--on:#eef3fa;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1424;--ink:#eaf0f8;--mute:#9fb0c6;--card:#111f36;--line:#233450;--tt:#3fd0bd}}
+:root[data-theme="dark"]{--bg:#0a1424;--ink:#eaf0f8;--mute:#9fb0c6;--card:#111f36;--line:#233450;--tt:#3fd0bd}
+*,*:before,*:after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Figtree,system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",Georgia,serif;line-height:1.15;margin:0}
+.wrap{max-width:940px;margin:0 auto;padding:0 22px}
+.hero{background:var(--navy);color:var(--on);padding:44px 0 36px}
+h1{font-size:clamp(32px,5vw,48px);font-weight:800;letter-spacing:-.03em}
+.hero p{max-width:60ch;opacity:.9;margin:10px 0 0}
+nav{display:flex;flex-wrap:wrap;gap:16px;padding:20px 0 0}
+nav a{color:var(--ink);font-weight:600;text-decoration:none;border-bottom:3px solid var(--amber)}
+section{padding:44px 0;border-top:1px solid var(--line);margin-top:26px}
+h2{font-size:clamp(25px,3.5vw,34px);letter-spacing:-.02em;margin-bottom:8px}
+.lead{color:var(--mute);max-width:64ch;margin:0 0 20px}
+ol.st{list-style:none;margin:0;padding:0;counter-reset:s;display:grid;gap:12px}
+ol.st li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px 14px 64px;position:relative}
+ol.st li:before{content:counter(s);position:absolute;left:18px;top:14px;width:32px;height:32px;border-radius:50%;background:var(--amber);color:#1a1200;font-weight:700;display:grid;place-items:center}
+ol.st b{display:block}ol.st span{color:var(--mute);font-size:16px}
+.calc{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:18px}
+label{font-weight:600;font-size:15px;display:block}
+input{width:100%;margin-top:4px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font:16px Figtree,sans-serif;background:var(--card);color:var(--ink)}
+.res{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.res div{background:var(--navy);color:var(--on);border-radius:12px;padding:16px}
+.res small{display:block;opacity:.8}.res b{font:800 24px "Bricolage Grotesque",Georgia,serif}
+ul.t{color:var(--mute);padding-left:20px}
+.note{color:var(--mute);font-size:15px;margin-top:12px}
+.em{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.box h3{font-size:18px}
+pre{margin:0;white-space:pre-wrap;font:15px/1.55 Figtree,system-ui,sans-serif;color:var(--mute);flex:1}
+button{align-self:flex-start;background:var(--amber);color:#1a1200;border:0;border-radius:8px;padding:9px 16px;font:600 15px Figtree,sans-serif;cursor:pointer}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+</style></head><body>
+<header class="hero"><div class="wrap"><h1>Hunarstack launch guide</h1><p>Put the website online, set your course fees, take enrolments and welcome your first students.</p></div></header>
+<div class="wrap">
+<nav><a href="#host">Go online</a><a href="#price">Set fees</a><a href="#enrol">Enrolment</a><a href="#email">Emails</a></nav>
+
+<section id="host"><h2>Put your website online (Netlify)</h2>
+<p class="lead">Free to start, no coding, and about 20 minutes. Netlify also collects your enrolment form.</p>
+<ol class="st">
+<li><b>Register your domain</b><span>Buy hunarstack.com (and .ai or .dev if you want) from Namecheap or GoDaddy.</span></li>
+<li><b>Unzip your package</b><span>Open hunarstack-brand-and-website.zip. The folder you upload is called website.</span></li>
+<li><b>Create a Netlify account</b><span>Sign up at netlify.com, choose Add new site, then Deploy manually.</span></li>
+<li><b>Drag the website folder in</b><span>Your site goes live on a temporary netlify.app address. Click through every page and the enrolment form.</span></li>
+<li><b>Connect your domain</b><span>Open Domain management, add hunarstack.com and follow the DNS instructions at your registrar. This can take from a few minutes to a day.</span></li>
+<li><b>Check the padlock</b><span>Netlify adds HTTPS automatically once the domain works.</span></li>
+<li><b>Turn on form alerts</b><span>In Forms, open the enrol form and add an email notification so every application reaches you.</span></li>
+<li><b>Create business email</b><span>Set up hello@hunarstack.com with Zoho Mail or Google Workspace, then replace the placeholder email on your pages.</span></li>
+</ol>
+<p class="note">To update the site later, drag the changed folder onto Netlify again. Free-plan limits change, so check Netlify's current form and bandwidth limits. Cloudflare Pages and GitHub Pages also host static sites, but they do not collect form entries.</p></section>
+
+<section id="price"><h2>Set your course fees</h2>
+<p class="lead">Enter your own costs to find the lowest fee that covers them and a fee that gives you the margin you want. The starting numbers are examples only.</p>
+<div class="calc">
+<label>Currency<input id="cur" value="PKR"></label>
+<label>Teacher pay per batch<input id="tp" type="number" value="80000"></label>
+<label>Other costs per batch (tools, ads, platform)<input id="oc" type="number" value="30000"></label>
+<label>Students you expect to enrol<input id="st" type="number" value="20"></label>
+<label>Margin you want (%)<input id="mg" type="number" value="40"></label>
+</div>
+<div class="res" id="res"></div>
+<ul class="t" style="margin-top:20px">
+<li>Look up three local academies and two international bootcamps that teach the same subject, and note their fees and what is included.</li>
+<li>Offer three price points: early-bird for the first 10 seats, standard, and a payment plan in 2 or 3 instalments.</li>
+<li>Give one scholarship seat per batch and a group discount for 3 or more friends or a company.</li>
+<li>Price short courses (Freelancing, AI Tools) lower to create an easy first purchase, then invite students to the longer tracks.</li>
+<li>State the refund rule in writing, for example a full refund before the first class and none after Week 2.</li></ul></section>
+
+<section id="enrol"><h2>Enrolment form</h2>
+<p class="lead">Your package now includes enrol.html and thanks.html in the website folder. Once deployed on Netlify, applications are saved in the Forms tab and can be emailed to you.</p>
+<ol class="st">
+<li><b>Applicant reviews</b><span>Reply within one working day with the course details and a payment link or bank details.</span></li>
+<li><b>Confirm the seat</b><span>Mark the seat as paid in a simple sheet: name, course, batch, amount, date.</span></li>
+<li><b>Add to the group</b><span>Invite them to the batch WhatsApp or Discord group and send the welcome email below.</span></li></ol></section>
+
+<section id="email"><h2>Email templates</h2>
+<p class="lead">Replace everything in [brackets] before sending.</p>
+<div class="em">
+<div class="box"><h3>1. Application received</h3><pre>Subject: We received your application, [Name]
+
+Assalam o alaikum [Name],
+
+Thank you for applying to [Course] at Hunarstack Academy. We have your details and will reply within one working day with the batch dates, the fee and how to confirm your seat.
+
+If you have any questions in the meantime, just reply to this email.
+
+Regards,
+[Your name]
+Hunarstack Academy</pre><button data-c>Copy</button></div>
+<div class="box"><h3>2. Welcome, seat confirmed</h3><pre>Subject: Welcome to Hunarstack Academy: [Course] starts [date]
+
+Assalam o alaikum [Name],
+
+Your seat in [Course] is confirmed. We are glad to have you.
+
+Start date: [date]
+Class times: [days and time] ([time zone])
+Class link: [link]
+Group: [WhatsApp or Discord link]
+
+Before Day 1, please: (1) install [tools], (2) create a free GitHub account, and (3) introduce yourself in the group.
+
+Your first week is about [Week 1 topic]. See you in class.
+
+[Your name]
+Hunarstack Academy</pre><button data-c>Copy</button></div>
+<div class="box"><h3>3. Payment reminder</h3><pre>Subject: Your seat in [Course] is waiting
+
+Assalam o alaikum [Name],
+
+A quick reminder that your seat in [Course] is held until [date]. To confirm it, please complete the payment of [amount] using [method].
+
+Seats are limited to [number], and we are close to full. If your plans have changed, let us know and we will offer the seat to someone on the waiting list.
+
+Regards,
+[Your name]
+Hunarstack Academy</pre><button data-c>Copy</button></div>
+</div></section>
+</div>
+<script>
+function calc(){var g=function(i){return parseFloat(document.getElementById(i).value)||0},c=document.getElementById("cur").value,
+cost=g("tp")+g("oc"),n=Math.max(g("st"),1),m=Math.min(g("mg"),95)/100,be=cost/n,fee=cost/(n*(1-m)),f=function(x){return c+" "+Math.round(x).toLocaleString()},
+low=fee*Math.round(n*0.7),
+r=[["Total cost per batch",f(cost)],["Break-even fee per student",f(be)],["Fee for your margin",f(fee)],["Profit if all seats fill",f(fee*n-cost)],["Result if only 70% enrol",f(low-cost)]];
+document.getElementById("res").innerHTML=r.map(function(x){return '<div><small>'+x[0]+'</small><b>'+x[1]+'</b></div>'}).join("");}
+document.querySelectorAll(".calc input").forEach(function(e){e.addEventListener("input",calc)});calc();
+document.querySelectorAll("[data-c]").forEach(function(b){b.addEventListener("click",function(){var t=b.parentElement.querySelector("pre").innerText;try{navigator.clipboard.writeText(t).then(function(){b.textContent="Copied"})}catch(e){b.textContent="Select and copy"}setTimeout(function(){b.textContent="Copy"},1800)})});
+</script></body></html>

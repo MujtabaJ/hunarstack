@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Student registration | HunarStack Academy</title>
+<meta name="description" content="Confirm your HunarStack seat after you have been offered a place. We will send payment details and your welcome email.">
+<meta name="theme-color" content="#3B9AFA">
+<link rel="canonical" href="https://hunarstack.com/register.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HunarStack">
+<meta property="og:title" content="Student registration | HunarStack Academy">
+<meta property="og:description" content="Confirm your place after we have offered you a seat.">
+<meta property="og:url" content="https://hunarstack.com/register.html">
+<meta property="og:image" content="https://hunarstack.com/assets/logo-mark.svg">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="logo" href="index.html"><img src="assets/logo-mark.svg" width="38" height="38" alt="">hunar<b>stack</b></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
+    <nav id="nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="courses.html">Courses</a>
+      <a href="syllabi.html">Syllabi</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn btn-main" href="enrol.html">Start Learning</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="wrap">
+    <p class="kicker">Confirm your place</p>
+    <h1>Student registration</h1>
+    <p>Complete this form after we have offered you a seat. We will send payment details and your welcome email. Your seat is confirmed when we receive payment or the first instalment.</p>
+  </div>
+</div>
+
+<main id="main">
+  <div class="wrap narrow">
+    <form name="registration" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="registration">
+      <p class="hp" aria-hidden="true"><label>Leave empty <input name="bot-field" tabindex="-1"></label></p>
+      <h2>Your details</h2>
+      <div class="g2">
+        <label>Full name<input name="name" type="text" autocomplete="name" required></label>
+        <label>Date of birth<input name="dob" type="date" autocomplete="bday" required></label>
+        <label>Email<input name="email" type="email" autocomplete="email" required></label>
+        <label>WhatsApp number<input name="whatsapp" type="tel" autocomplete="tel" required></label>
+        <label>City<input name="city" type="text" autocomplete="address-level2" required></label>
+        <label>Country<input name="country" type="text" autocomplete="country-name" required></label>
+      </div>
+      <h2>Your background</h2>
+      <div class="g2">
+        <label>Education<select name="education" required>
+          <option value="">Choose one</option>
+          <option>Matric or equivalent</option>
+          <option>Intermediate</option>
+          <option>Bachelor</option>
+          <option>Master or higher</option>
+          <option>Other</option>
+        </select></label>
+        <label>Current occupation<input name="occupation" type="text" autocomplete="organization-title"></label>
+        <label>Programming experience<select name="exp" required>
+          <option value="">Choose one</option>
+          <option>None</option>
+          <option>Beginner</option>
+          <option>Intermediate</option>
+          <option>Advanced</option>
+        </select></label>
+        <label>Do you have a laptop?<select name="laptop" required>
+          <option value="">Choose one</option>
+          <option>Yes</option>
+          <option>No, I need advice</option>
+        </select></label>
+      </div>
+      <h2>Your course</h2>
+      <div class="g2">
+        <label>Track<select name="track" required>
+          <option value="">Choose one</option>
+          <optgroup label="Skill tracks">
+            <option>AI &amp; Generative AI</option>
+            <option>Software Development</option>
+            <option>Mobile App Development</option>
+            <option>Web Development</option>
+            <option>UI/UX</option>
+            <option>Cloud &amp; APIs</option>
+            <option>AI Tools &amp; Automation</option>
+            <option>Freelancing</option>
+            <option>Remote Work &amp; Global Clients</option>
+            <option>Real-world Projects</option>
+          </optgroup>
+          <optgroup label="Digital platforms (AI-assisted)">
+            <option>Upwork</option>
+            <option>Fiverr</option>
+            <option>Freelancer.com</option>
+            <option>LinkedIn</option>
+            <option>TikTok</option>
+            <option>YouTube</option>
+            <option>Facebook</option>
+          </optgroup>
+        </select></label>
+        <label>Sub-course or interest (optional)<input name="subcourse" type="text"></label>
+        <label>Preferred batch<select name="batch" required>
+          <option value="">Choose one</option>
+          <option>Morning</option>
+          <option>Evening</option>
+          <option>Weekend</option>
+          <option>No preference</option>
+        </select></label>
+        <label>Learning mode<select name="mode" required>
+          <option value="">Choose one</option>
+          <option>Live online</option>
+          <option>On-site</option>
+          <option>Either</option>
+        </select></label>
+      </div>
+      <h2>Payment</h2>
+      <div class="g2">
+        <label>Payment plan<select name="plan" required>
+          <option value="">Choose one</option>
+          <option>Full payment</option>
+          <option>2 instalments</option>
+          <option>3 instalments</option>
+        </select></label>
+        <label>Payment method<select name="method" required>
+          <option value="">Choose one</option>
+          <option>Bank transfer</option>
+          <option>Mobile wallet</option>
+          <option>Other (we will contact you)</option>
+        </select></label>
+      </div>
+      <h2>Emergency contact</h2>
+      <div class="g2">
+        <label>Contact name<input name="ec_name" type="text" required></label>
+        <label>Contact phone<input name="ec_phone" type="tel" required></label>
+      </div>
+      <h2>Under 18?</h2>
+      <label>Parent or guardian name (required if under 18)<input name="guardian" type="text"></label>
+      <h2>Agreements</h2>
+      <label class="chk"><input type="checkbox" name="terms" required> <span>I have read and accept the <a href="terms.html">Terms and Conditions</a> and <a href="privacy.html">Privacy Policy</a>.</span></label>
+      <label class="chk"><input type="checkbox" name="info" required> <span>I confirm the information above is correct.</span></label>
+      <label class="chk"><input type="checkbox" name="guardian_ok"> <span>If I am under 18, my parent or guardian agrees to this registration.</span></label>
+      <label class="chk"><input type="checkbox" name="media"> <span>You may share my photo or project work in marketing (optional).</span></label>
+      <button class="btn btn-main" type="submit">Submit registration</button>
+    </form>
+    <p class="note">Have not applied yet? <a href="enrol.html">Apply for a seat first</a>.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="index.html"><img src="assets/logo-mark.svg" width="38" height="38" alt="">hunar<b>stack</b></a>
+        <p style="margin-top:12px">Learn. Build. Freelance. Earn.</p>
+        <p>Your skills can take you further.</p>
+      </div>
+      <div>
+        <h3>Learn</h3>
+        <ul>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="syllabi.html">Syllabi</a></li>
+          <li><a href="enrol.html">Apply for a seat</a></li>
+          <li><a href="register.html">Register</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>HunarStack</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="mailto:hello@hunarstack.com">hello@hunarstack.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms and Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-copy"><span>&copy; HunarStack Academy.</span></div>
+  </div>
+</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

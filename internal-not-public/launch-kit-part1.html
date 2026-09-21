@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hunarstack Launch Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8fb;--ink:#0d1b2e;--mute:#4a5a70;--card:#fff;--line:#d6dee9;--navy:#0f2747;--amber:#f2a516;--teal:#12a594;--on:#eef3fa;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1424;--ink:#eaf0f8;--mute:#9fb0c6;--card:#111f36;--line:#233450}}
+:root[data-theme="dark"]{--bg:#0a1424;--ink:#eaf0f8;--mute:#9fb0c6;--card:#111f36;--line:#233450}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*:before,*:after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Figtree,system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",Georgia,serif;line-height:1.15;margin:0}
+.wrap{max-width:980px;margin:0 auto;padding:0 22px}
+header{padding:44px 0 20px}
+h1{font-size:clamp(34px,5vw,54px);font-weight:800;letter-spacing:-.03em}
+.sub{color:var(--mute);max-width:60ch;margin:12px 0 0}
+nav{display:flex;gap:18px;flex-wrap:wrap;margin-top:22px}
+nav a{color:var(--ink);font-weight:600;text-decoration:none;border-bottom:3px solid var(--amber)}
+section{padding:52px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(26px,3.5vw,36px);letter-spacing:-.02em;margin-bottom:8px}
+.lead{color:var(--mute);max-width:62ch;margin:0 0 26px}
+.logos{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.tile{border-radius:16px;padding:30px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-height:200px;border:1px solid var(--line)}
+.tile.n{background:var(--navy);color:var(--on)}.tile.l{background:#fff;color:#0d1b2e}.tile.a{background:var(--amber);color:#1a1200}
+.word{font-family:"Bricolage Grotesque",Georgia,serif;font-weight:800;font-size:30px;letter-spacing:-.02em}
+.word b{color:var(--teal)}.tile.a .word b{color:#0f2747}
+.tile small{opacity:.8;font-size:14px}
+.sw{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.sw div{width:120px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--card);font-size:14px}
+.sw i{display:block;height:54px}.sw span{display:block;padding:8px 10px;color:var(--mute)}
+.weeks{display:grid;gap:14px}
+.wk{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--teal);border-radius:12px;padding:18px 22px}
+.wk h3{font-size:20px}.wk p{margin:6px 0 0;color:var(--mute);font-size:16px}.wk strong{color:var(--ink)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:24px}
+.facts div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;font-size:16px}
+.facts b{display:block;font-family:"Bricolage Grotesque",Georgia,serif;font-size:19px}
+.msgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.msg{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.msg h3{font-size:19px}.msg pre{margin:0;white-space:pre-wrap;font:15.5px/1.55 Figtree,system-ui,sans-serif;color:var(--mute);flex:1}
+button{align-self:flex-start;background:var(--amber);color:#1a1200;border:0;border-radius:8px;padding:9px 16px;font:600 15px Figtree,sans-serif;cursor:pointer}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.posts{padding:0;margin:0;list-style:none;display:grid;gap:12px}
+.posts li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;display:grid;grid-template-columns:110px 1fr;gap:14px;font-size:16px}
+.posts em{font-style:normal;font-weight:600;color:var(--teal)}
+footer{padding:30px 0 50px;color:var(--mute);font-size:15px;border-top:1px solid var(--line)}
+@media(max-width:600px){.posts li{grid-template-columns:1fr;gap:2px}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="mark" viewBox="0 0 120 120">
+<rect width="120" height="120" rx="26" fill="#0f2747"/>
+<rect x="29" y="26" width="15" height="68" rx="4" fill="#eef3fa"/>
+<rect x="76" y="26" width="15" height="68" rx="4" fill="#eef3fa"/>
+<rect x="44" y="42" width="32" height="10" fill="#12a594"/>
+<rect x="44" y="55" width="32" height="10" fill="#f2a516"/>
+<rect x="44" y="68" width="32" height="10" fill="#5b8fd6"/>
+</symbol>
+</svg>
+<div class="wrap">
+<header>
+<h1>Hunarstack launch kit</h1>
+<p class="sub">Logo and brand colors, the first course syllabus, ready-to-send outreach messages, and your first two weeks of social posts. Edit anything in [brackets].</p>
+<nav><a href="#logo">Logo</a><a href="#syllabus">Syllabus</a><a href="#outreach">Outreach</a><a href="#posts">Posts</a></nav>
+</header>
+
+<section id="logo">
+<h2>Logo and colors</h2>
+<p class="lead">The mark is an H whose crossbar is three stacked layers: skill, code and delivery. It stays readable at profile-picture size.</p>
+<div class="logos">
+<div class="tile n"><svg width="96" height="96"><use href="#mark"/></svg><small>App icon and profile picture</small></div>
+<div class="tile l"><div style="display:flex;align-items:center;gap:12px"><svg width="52" height="52"><use href="#mark"/></svg><span class="word">hunar<b>stack</b></span></div><small>Horizontal logo, light background</small></div>
+<div class="tile a"><div style="display:flex;align-items:center;gap:12px"><svg width="52" height="52"><use href="#mark"/></svg><span class="word">hunar<b>stack</b></span></div><small>Horizontal logo, amber background</small></div>
+</div>
+<div class="sw">
+<div><i style="background:#0f2747"></i><span>Navy #0F2747<br>Main brand</span></div>
+<div><i style="background:#12a594"></i><span>Teal #12A594<br>Accents</span></div>
+<div><i style="background:#f2a516"></i><span>Amber #F2A516<br>Buttons</span></div>
+<div><i style="background:#eef3fa"></i><span>Mist #EEF3FA<br>Backgrounds</span></div>
+</div>
+<p class="lead" style="margin-top:18px">Fonts: Bricolage Grotesque for headings and the wordmark, Figtree for body text. Both are free on Google Fonts. To export the logo as an image, screenshot the tiles above or ask a designer to trace the SVG.</p>
+</section>
+
+<section id="syllabus">
+<h2>Web Development syllabus (8 weeks)</h2>
+<p class="lead">Beginner course with no prior coding needed. Every week ends with something built and pushed to GitHub.</p>
+<div class="facts">
+<div><b>Format</b>2 live classes a week, 2 hours each</div>
+<div><b>Practice</b>About 4 hours a week, with mentor feedback</div>
+<div><b>Batch size</b>15 to 25 students</div>
+<div><b>Outcome</b>4 portfolio projects and a live portfolio site</div>
+</div>
+<div class="weeks">
+<div class="wk"><h3>Week 1: Web basics and tools</h3><p>How the web works, VS Code, Git and GitHub, HTML structure. <strong>Project:</strong> personal profile page.</p></div>
+<div class="wk"><h3>Week 2: CSS and responsive layout</h3><p>Selectors, spacing, Flexbox, Grid, mobile-first design. <strong>Project:</strong> responsive landing page for a business.</p></div>
+<div class="wk"><h3>Week 3: JavaScript fundamentals</h3><p>Variables, functions, arrays, objects, loops, logic. <strong>Project:</strong> quiz or calculator.</p></div>
+<div class="wk"><h3>Week 4: JavaScript in the browser</h3><p>DOM, events, forms, fetching data from APIs. <strong>Project:</strong> weather or currency app.</p></div>
+<div class="wk"><h3>Week 5: React basics</h3><p>Components, props, state, lists. <strong>Project:</strong> rebuild the Week 4 app in React.</p></div>
+<div class="wk"><h3>Week 6: React in practice</h3><p>Hooks, routing, working with API data, code organisation. <strong>Project:</strong> expense or task tracker.</p></div>
+<div class="wk"><h3>Week 7: Deploy and polish</h3><p>Hosting on Netlify or Vercel, accessibility, performance, reading client briefs. <strong>Project:</strong> live portfolio site.</p></div>
+<div class="wk"><h3>Week 8: Capstone and freelance start</h3><p>Build a small client-style project from a written brief, present it, then set up a first freelance profile. <strong>Project:</strong> capstone demo day.</p></div>
+</div>
+</section>
+
+<section id="outreach">
+<h2>Outreach messages</h2>
+<p class="lead">Send 10 personalised messages a day. Always mention something specific about the person's business, and never paste the same message twice.</p>
+<div class="msgs">
+<div class="msg"><h3>1. LinkedIn connection note</h3><pre>Hi [Name], I saw [specific thing about their company]. I run Hunarstack, a small software team building web and AI tools for [industry] companies. Would be glad to connect.</pre><button data-c>Copy</button></div>
+<div class="msg"><h3>2. First message after connecting</h3><pre>Thanks for connecting, [Name]. I noticed [specific observation, e.g. your booking page loads slowly on mobile]. We recently helped [similar client or demo project] with a similar issue. If useful, I can send a short list of fixes, free. No obligation.</pre><button data-c>Copy</button></div>
+<div class="msg"><h3>3. Follow-up after 5 days</h3><pre>Hi [Name], following up in case my last note got buried. We take on fixed-price projects such as landing pages in 7 days or AI chatbots in 3 weeks. If [pain point] is on your list this quarter, happy to send a quote after a 15-minute call.</pre><button data-c>Copy</button></div>
+<div class="msg"><h3>4. Student invitation (WhatsApp or DM)</h3><pre>Assalam o alaikum [Name]! We're starting the first batch of Hunarstack Academy's 8-week Web Development course. No coding experience needed, and you finish with 4 real projects. There's a free intro class on [date]. Want me to save you a seat?</pre><button data-c>Copy</button></div>
+</div>
+</section>
+
+<section id="posts">
+<h2>First two weeks of social posts</h2>
+<p class="lead">Post on Instagram, LinkedIn and TikTok. Reuse each idea as a carousel, a short video and a text post.</p>
+<ul class="posts">
+<li><em>Day 1</em><span>Launch story: what "hunar" means and why we started Hunarstack.</span></li>
+<li><em>Day 2</em><span>3 mistakes beginners make when learning to code, and how to avoid them.</span></li>
+<li><em>Day 4</em><span>Short video: a messy web page turned into a clean one in 60 seconds.</span></li>
+<li><em>Day 5</em><span>Roadmap carousel: how to learn web development in 8 weeks.</span></li>
+<li><em>Day 7</em><span>Announce the free intro class with date, time and a sign-up link.</span></li>
+<li><em>Day 8</em><span>Freelancing tip: how to write your first Upwork proposal.</span></li>
+<li><em>Day 10</em><span>Behind the scenes: how we run a client project sprint.</span></li>
+<li><em>Day 11</em><span>HTML or React: what should you learn first?</span></li>
+<li><em>Day 13</em><span>Reveal the full course syllabus, week by week.</span></li>
+<li><em>Day 14</em><span>Early-bird offer for the first 10 students, with a countdown.</span></li>
+</ul>
+</section>
+
+<footer>Hunarstack launch kit. Replace every [bracket] before sending or posting.</footer>
+</div>
+<script>
+document.querySelectorAll('[data-c]').forEach(function(b){
+b.addEventListener('click',function(){
+var t=b.parentElement.querySelector('pre').innerText;
+try{navigator.clipboard.writeText(t).then(function(){b.textContent='Copied'})}catch(e){b.textContent='Select and copy'}
+setTimeout(function(){b.textContent='Copy'},1800);
+});});
+</script>
+</body>
+</html>

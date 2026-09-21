@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hunarstack Launch Kit, Part 2</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8fb;--ink:#0d1b2e;--mute:#4a5a70;--card:#fff;--line:#d6dee9;--amber:#f2a516;--teal:#12a594;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1424;--ink:#eaf0f8;--mute:#9fb0c6;--card:#111f36;--line:#233450}}
+:root[data-theme="dark"]{--bg:#0a1424;--ink:#eaf0f8;--mute:#9fb0c6;--card:#111f36;--line:#233450}
+*,*:before,*:after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Figtree,system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",Georgia,serif;line-height:1.15;margin:0}
+.wrap{max-width:980px;margin:0 auto;padding:0 22px}
+header{padding:44px 0 18px}
+h1{font-size:clamp(32px,5vw,50px);font-weight:800;letter-spacing:-.03em}
+.sub,.lead{color:var(--mute);max-width:62ch}
+.sub{margin:12px 0 0}
+nav{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px}
+nav a{color:var(--ink);font-weight:600;text-decoration:none;border-bottom:3px solid var(--amber)}
+section{padding:48px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(25px,3.5vw,34px);letter-spacing:-.02em;margin-bottom:8px}
+.lead{margin:0 0 24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-top:6px solid var(--teal);border-radius:14px;padding:22px}
+.card h3{font-size:22px}
+.meta{color:var(--teal);font-weight:600;font-size:15px;margin:4px 0 10px}
+.card ul{margin:0;padding-left:18px;color:var(--mute);font-size:16px}
+.card li{margin-bottom:6px}.card li b{color:var(--ink)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.box h3{font-size:19px}
+pre{margin:0;white-space:pre-wrap;font:15.5px/1.6 Figtree,system-ui,sans-serif;color:var(--mute);flex:1}
+button{align-self:flex-start;background:var(--amber);color:#1a1200;border:0;border-radius:8px;padding:9px 16px;font:600 15px Figtree,sans-serif;cursor:pointer}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+footer{padding:28px 0 48px;color:var(--mute);font-size:15px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>Hunarstack launch kit, part 2</h1>
+<p class="sub">Three more course syllabi, a client proposal template, and three short video scripts. Replace everything in [brackets].</p>
+<nav><a href="#courses">Courses</a><a href="#proposal">Proposal</a><a href="#scripts">Video scripts</a></nav>
+</header>
+
+<section id="courses">
+<h2>Course syllabi</h2>
+<p class="lead">Each course ends with portfolio work students can show to clients. Adjust the tools to what you are comfortable teaching.</p>
+<div class="grid">
+<div class="card"><h3>Python and AI Foundations</h3><div class="meta">8 weeks, beginner, 2 classes a week</div><ul>
+<li><b>Week 1:</b> Python basics, variables, input and output</li>
+<li><b>Week 2:</b> Conditions, loops, functions</li>
+<li><b>Week 3:</b> Lists, dictionaries, reading and writing files</li>
+<li><b>Week 4:</b> Libraries and calling web APIs</li>
+<li><b>Week 5:</b> Data analysis with pandas and simple charts</li>
+<li><b>Week 6:</b> Using an AI model API: prompts, responses, costs</li>
+<li><b>Week 7:</b> Build an AI tool, such as a document summariser</li>
+<li><b>Week 8:</b> Capstone: a small AI product for a real use case</li></ul></div>
+
+<div class="card"><h3>Full-Stack Development</h3><div class="meta">10 weeks, intermediate, needs Web Development or equal skill</div><ul>
+<li><b>Weeks 1 to 2:</b> Node.js and Express, building REST APIs</li>
+<li><b>Weeks 3 to 4:</b> Databases: design, queries, connecting to your API</li>
+<li><b>Week 5:</b> Login, passwords, sessions and basic security</li>
+<li><b>Week 6:</b> Connecting a React front end to your API</li>
+<li><b>Week 7:</b> Testing and working in a team with Git</li>
+<li><b>Week 8:</b> Deployment, environment settings, monitoring</li>
+<li><b>Weeks 9 to 10:</b> Team capstone: a complete product with users and data</li></ul></div>
+
+<div class="card"><h3>Freelancing Launchpad</h3><div class="meta">4 weeks, all levels, 2 classes a week</div><ul>
+<li><b>Week 1:</b> Pick a niche, define 2 services, set your pricing</li>
+<li><b>Week 2:</b> Build profiles on Upwork, Fiverr and LinkedIn, plus a portfolio</li>
+<li><b>Week 3:</b> Find jobs, write proposals, run client calls, agree scope in writing</li>
+<li><b>Week 4:</b> Deliver work, handle revisions, ask for reviews, get paid, win repeat clients</li>
+<li><b>Bonus:</b> Live proposal review, and a checklist for payment methods and taxes (check current local rules)</li></ul></div>
+</div>
+</section>
+
+<section id="proposal">
+<h2>Client proposal template</h2>
+<p class="lead">Send this after the first call. Clear scope and payment terms prevent most disputes.</p>
+<div class="box"><pre>PROPOSAL: [Project name]
+Prepared for: [Client name, company]   Date: [date]   Valid for: 14 days
+
+1. Overview
+[Two sentences on the client's goal and the problem we are solving.]
+
+2. Scope of work
+- [Feature or page 1]
+- [Feature or page 2]
+- [Feature or page 3]
+
+3. Deliverables
+- Source code and deployed website or app
+- [Design files / documentation]
+- 30 days of free bug fixes after launch
+
+4. Timeline
+Week 1: Design and planning
+Weeks 2 to [X]: Development with a demo every 2 weeks
+Week [X+1]: Testing, launch and handover
+
+5. Price and payment
+Total: [amount and currency]
+[40%] to start, [30%] at the mid-point demo, [30%] at launch.
+
+6. Not included
+Anything not listed in section 2, including [hosting fees, paid third-party services, content writing]. Extra work is quoted separately.
+
+7. What we need from you
+Logo and brand files, written content, and feedback within [3] working days of each demo.
+
+8. Next step
+Reply "approved" to this email and we will send the invoice and start date.
+
+[Your name], Hunarstack | [email] | [phone]</pre><button data-c>Copy</button></div>
+</section>
+
+<section id="scripts">
+<h2>Video scripts</h2>
+<p class="lead">Each runs 30 to 45 seconds. Film on a phone, facing a window, with captions on.</p>
+<div class="two">
+<div class="box"><h3>1. What "hunar" means</h3><pre>HOOK: "Hunar" is the most valuable word in tech, and it isn't English.
+BODY: Hunar means skill and craft. Anyone can copy code. Nobody can copy real skill. That is why we named our company Hunarstack: skill is the foundation, and the stack is what you build on it.
+BODY: We build software for clients around the world, and we teach the next generation of developers to do the same.
+CTA: Follow to see how we build, and how you can learn.</pre><button data-c>Copy</button></div>
+<div class="box"><h3>2. Three beginner mistakes</h3><pre>HOOK: Stop making these 3 mistakes when you learn to code.
+BODY: One, watching tutorials without building. Build something after every lesson.
+Two, jumping between languages. Pick one path for 8 weeks.
+Three, waiting until you feel ready. Put your first project on GitHub this week, even if it is ugly.
+CTA: Want a clear 8-week path? Free intro class this [day]. Link in bio.</pre><button data-c>Copy</button></div>
+<div class="box"><h3>3. Free intro class invitation</h3><pre>HOOK: In 60 minutes, you'll build your first web page. No experience needed.
+BODY: On [date] at [time], we are running a free live class. You will write real HTML and CSS, publish a page, and see the full 8-week Web Development roadmap.
+BODY: Seats are limited to [50] so everyone gets help.
+CTA: Tap the link in bio to reserve your seat.</pre><button data-c>Copy</button></div>
+</div>
+</section>
+
+<footer>Hunarstack launch kit, part 2. Replace every [bracket] before use.</footer>
+</div>
+<script>
+document.querySelectorAll('[data-c]').forEach(function(b){
+b.addEventListener('click',function(){
+var t=b.parentElement.querySelector('pre').innerText;
+try{navigator.clipboard.writeText(t).then(function(){b.textContent='Copied'})}catch(e){b.textContent='Select and copy'}
+setTimeout(function(){b.textContent='Copy'},1800);
+});});
+</script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hunarstack Launch Week Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8fb;--ink:#0d1b2e;--mute:#4a5a70;--card:#fff;--line:#d6dee9;--navy:#0f2747;--amber:#f2a516;--teal:#12a594;--tt:#0b7a6d;--on:#eef3fa;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1424;--ink:#eaf0f8;--mute:#9fb0c6;--card:#111f36;--line:#233450;--tt:#3fd0bd}}
+:root[data-theme="dark"]{--bg:#0a1424;--ink:#eaf0f8;--mute:#9fb0c6;--card:#111f36;--line:#233450;--tt:#3fd0bd}
+*,*:before,*:after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Figtree,system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",Georgia,serif;line-height:1.15;margin:0}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+.hero{background:var(--navy);color:var(--on);padding:44px 0 38px}
+h1{font-size:clamp(32px,5vw,48px);font-weight:800;letter-spacing:-.03em}
+.hero p{max-width:62ch;opacity:.9;margin:10px 0 0}
+nav{display:flex;flex-wrap:wrap;gap:16px;padding:20px 0 0}
+nav a{color:var(--ink);font-weight:600;text-decoration:none;border-bottom:3px solid var(--amber)}
+section{padding:40px 0;border-top:1px solid var(--line);margin-top:24px}
+h2{font-size:clamp(25px,3.5vw,34px);letter-spacing:-.02em;margin-bottom:8px}
+.lead{color:var(--mute);max-width:64ch;margin:0 0 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.box h3{font-size:19px}
+.tag{color:var(--tt);font-weight:600;font-size:15px}
+.vis{font-size:15px;color:var(--mute);background:var(--bg);border-radius:8px;padding:10px 12px}.vis b{color:var(--ink)}
+pre{margin:0;white-space:pre-wrap;font:15.5px/1.55 Figtree,system-ui,sans-serif;color:var(--mute);flex:1}
+button{align-self:flex-start;background:var(--amber);color:#1a1200;border:0;border-radius:8px;padding:9px 16px;font:600 15px Figtree,sans-serif;cursor:pointer}
+ul{color:var(--mute);padding-left:20px}li{margin-bottom:6px}
+.note{background:var(--navy);color:var(--on);border-radius:14px;padding:18px 22px;margin-top:22px}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+</style></head><body>
+<header class="hero"><div class="wrap"><h1>Launch week kit</h1><p>Announcements and seven daily posts counting down to launch day, Monday 28 September 2026. Every caption has a copy button. Replace anything in [brackets].</p></div></header>
+<div class="wrap">
+<nav><a href="#ann">Announcements</a><a href="#week">7-day countdown</a><a href="#conf">Confidence lines</a><a href="#tips">Posting tips</a></nav>
+<section id="ann"><h2>Launch announcements</h2><p class="lead">The same message, written for four places. Send them from Tuesday 22 September.</p><div class="grid" id="A"></div></section>
+<section id="week"><h2>Seven days to launch</h2><p class="lead">Tuesday 22 to Monday 28 September. Post once a day, ideally in the evening when your audience is online.</p><div class="grid" id="D"></div></section>
+<section id="conf"><h2>Confidence lines</h2><p class="lead">Short lines for captions, stories and image text.</p><ul id="C"></ul></section>
+<section id="tips"><h2>Posting tips</h2><ul id="P"></ul>
+<div class="note"><b>A note on honesty.</b> The copy promises a path, real projects and support, never a specific income. That protects your students, your reputation and your terms. Only show earnings screenshots you can prove, and add "results depend on effort" if you do.</div></section>
+</div>
+<script>
+var H="#Hunarstack #Freelancing #LearnToCode #TechSkills #Pakistan";
+var A=[
+["1. LinkedIn and Facebook (full announcement)",`Hunarstack launches on 28 September 2026. 🚀
+
+We are a software house and tech academy, built around one idea: a skill should become income.
+
+Most courses stop at teaching. At Hunarstack you also:
+✅ Build real projects for your portfolio
+✅ Set up your Upwork, Fiverr and LinkedIn profiles
+✅ Learn to write proposals and talk to clients
+✅ Practise on live, client-style projects with mentors beside you
+
+Ten tracks to start from: Web Development, AI, Mobile Apps, UI/UX, Freelancing, Remote Work and more.
+
+No degree needed. Most tracks need no experience. Our first batch starts with beginners, and that is exactly where we begin.
+
+We will not promise you income, because nobody honest can. We promise a clear path, real projects and a team that helps you reach your first client.
+
+Applications open on 28 September. Join the waiting list: [link]
+
+`+H],
+["2. Instagram caption",`28 September 2026. 🚀
+Learn a skill. Build real projects. Get your first client.
+Hunarstack Academy opens for applications soon.
+Tap the link in bio to join the waiting list. 💙
+
+`+H],
+["3. WhatsApp broadcast",`Assalam o alaikum [Name]! 👋
+
+Hunarstack Academy launches on 28 September 2026.
+
+We don't only teach coding. We help you build a portfolio, set up freelance profiles, write proposals and work on real projects, so you can start earning from your skill.
+
+Most courses need no experience.
+
+Want a seat in the first batch? Reply YES or apply here: [link]`],
+["4. Email to your waiting list",`Subject: Hunarstack opens on 28 September: your path from skill to income
+
+Assalam o alaikum [Name],
+
+On Monday 28 September 2026, Hunarstack Academy opens for applications.
+
+You will learn a skill, build real projects, set up your freelance profiles and practise writing proposals, with mentors who review your work. Our best students are also invited to join real client projects.
+
+We cannot promise income, but we can promise a clear plan and real support. Everyone starts as a beginner.
+
+First batch starts: [batch start date]
+Seats: [number]
+Early-bird offer for the first [10] applicants: [offer]
+
+Apply on 28 September: [link]
+
+See you in class,
+[Your name]
+Hunarstack`]];
+var D=[
+["Tue 22 Sept: 6 days to go","Carousel, 4 slides","Slide 1: 28 September 2026. Slide 2: Learn a skill. Slide 3: Build real projects. Slide 4: Get your first client. Also post Announcement 1 on LinkedIn and Facebook today.",`6 days to go. 🚀
+
+On 28 September, Hunarstack opens its doors: a software house and tech academy built to turn your skill into income.
+
+Learn. Build real projects. Set up your freelance profile. Start working with clients.
+
+Join the waiting list: [link]
+
+`+H],
+["Wed 23 Sept: 5 days to go","Reel, about 30 seconds","Say to camera: You are not too late to start freelancing. Clients don't ask for your degree. They ask: can you solve my problem, and can I see proof? Proof is a portfolio. A portfolio is built from projects. Projects come from skill. And skill can be learned, one week at a time. Follow to see how, starting 28 September.",`Everyone you admire in tech started as a beginner. 💙
+
+The gap between you and them is not talent. It is time and a plan.
+
+5 days to go. Follow along.
+
+`+H],
+["Thu 24 Sept: 4 days to go","Carousel, 6 slides","Title: Beginner to freelancer in 5 steps. 1 Pick one skill. 2 Build 3 projects. 3 Publish your profiles (Upwork, Fiverr, LinkedIn). 4 Send proposals every week. 5 Deliver well, collect reviews, repeat.",`This is the path we teach and practise, step by step, with mentors.
+
+It takes work, and it works when you do it. No shortcuts and no magic, just a clear plan.
+
+Save this post. Which step feels hardest? Tell us in the comments.
+
+4 days to go. 🗓️
+
+`+H],
+["Fri 25 Sept: 3 days to go","Poll or carousel","Question: Which skill do you want to earn from? Options: Web development, AI and automation, Mobile apps, UI/UX design.",`Businesses around the world hire freelancers for all of these skills. 🌍
+
+Which one is yours? Vote or comment below.
+
+We are building the first batch around what you choose. 3 days to go.
+
+Waiting list: [link]
+
+`+H],
+["Sat 26 Sept: 2 days to go","Carousel, 6 slides","Title: What you get at Hunarstack. Live classes. Mentor feedback. A project every week. Profile and proposal coaching. Client-style team projects. A community that cheers you on.",`We don't only teach you. We stay with you until you can show real work and pitch it to real clients. 🤝
+
+Live classes. Mentors. Weekly projects. Freelance profile and proposal coaching. Real project experience.
+
+2 days to go.
+
+`+H],
+["Sun 27 Sept: 1 day to go","Post plus 4-slide story FAQ","Story 1: Do I need experience? Most tracks: no. Story 2: Do I need a laptop? Yes, and we will advise you. Story 3: Is it online? [Live online / on-site]. Story 4: How do I join? Apply tomorrow.",`Tomorrow, applications open. 🔔
+
+If you have been waiting for a sign to begin, this is it. Your first step is small: fill in a form.
+
+Set your reminder. See you tomorrow.
+
+`+H],
+["Mon 28 Sept: launch day","Reel or carousel, then go live at 8 pm","Title: We are live! Learn a skill. Build real projects. Get your first client. Apply now. Pin this post today.",`Hunarstack is live! 🎉
+
+Applications for our first batch are open today.
+
+Learn a skill. Build real projects. Get your first client.
+
+First batch starts: [batch start date]
+Seats: [number]
+Early-bird for the first [10] applicants: [offer]
+
+Apply: [link]
+
+`+H]];
+var C=["Every professional you admire once wrote their first line of code.","Clients pay for proof of your work, not for certificates.","You don't need to know everything. You need to solve one problem well.","Your first project will be rough. Your fifth will be good. Your twentieth will get you hired.","A beginner who practises daily will pass an expert who doesn't.","Freelancing is a skill too. Pricing, proposals and communication can be learned.","Small steps every week add up to a new career.","Starting late is still starting."];
+var P=["Post between 7 and 10 pm Pakistan time, when most students are online.","Reply to every comment and message within an hour during launch week.","Put the waiting list or Apply page link in your bio on every platform.","Design visuals in Canva with navy, teal and amber, and the Hunarstack logo on every image.","Save the FAQ story as a highlight so new visitors can read it.","Ask people to tag a friend who wants to learn, and share the best replies in stories.","On 28 September, pin the launch post and message everyone on your waiting list personally."];
+var store=[];
+function card(t,meta,vis,txt){store.push(txt);return '<div class="box"><h3>'+t+'</h3>'+(meta?'<div class="tag">'+meta+'</div>':'')+(vis?'<div class="vis"><b>Visual:</b> '+vis+'</div>':'')+'<pre></pre><button data-i="'+(store.length-1)+'">Copy caption</button></div>';}
+document.getElementById("A").innerHTML=A.map(function(a){return card(a[0],"","",a[1])}).join("");
+document.getElementById("D").innerHTML=D.map(function(d){return card(d[0],d[1],d[2],d[3])}).join("");
+document.querySelectorAll(".box").forEach(function(b,i){b.querySelector("pre").textContent=store[i]});
+document.getElementById("C").innerHTML=C.map(function(x){return "<li>"+x+"</li>"}).join("");
+document.getElementById("P").innerHTML=P.map(function(x){return "<li>"+x+"</li>"}).join("");
+document.querySelectorAll("button[data-i]").forEach(function(b){b.addEventListener("click",function(){
+var t=store[b.getAttribute("data-i")];
+try{navigator.clipboard.writeText(t).then(function(){b.textContent="Copied"})}catch(e){b.textContent="Select and copy"}
+setTimeout(function(){b.textContent="Copy caption"},1800)})});
+</script></body></html>
