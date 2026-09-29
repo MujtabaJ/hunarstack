@@ -2,25 +2,28 @@ import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { PageHero } from "../components/CourseCard";
 import { useAuth } from "../context/AuthContext";
 import { useData } from "../context/DataContext";
+import { CATEGORIES, COURSES, getCourse as marketingCourse } from "../data/courses";
 
 export default function Enrol() {
   const { user } = useAuth();
   const { apply, getCourse, liveCourses } = useData();
   const nav = useNavigate();
   const [params] = useSearchParams();
-  const preset = getCourse(params.get("track") || "")?.id || "";
+  const fromCatalog = marketingCourse(params.get("track") || "");
+  const preset = getCourse(params.get("track") || "")?.id || fromCatalog?.slug || "";
 
   function onSubmit(e) {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
     const course = getCourse(data.courseId);
+    const listed = marketingCourse(data.courseId);
     apply({
       name: data.name,
       email: data.email,
       phone: data.whatsapp,
       city: data.location,
       courseId: data.courseId,
-      track: course?.name || data.courseId,
+      track: course?.name || listed?.title || data.courseId,
       level: data.level,
       goal: data.goal,
       source: data.source,
@@ -35,7 +38,7 @@ export default function Enrol() {
       <PageHero
         kicker="Start your journey"
         title="Apply for a seat"
-        text="Tell us a little about you. Your application appears in the academy Applications queue as soon as you send it. Applying does not guarantee a place until an admin accepts it."
+        text="Tell us a little about you. School pathways are PKR 500, 1,000 or 1,500 per month. Freelancing and professional courses are PKR 2,000–3,000 per month. Applying does not guarantee a seat, a client or income."
       />
       <main id="main">
         <div className="wrap narrow">
@@ -50,13 +53,15 @@ export default function Enrol() {
               <label>Track you want to join
                 <select name="courseId" required defaultValue={preset}>
                   <option value="">Choose one</option>
-                  <optgroup label="Skill tracks">
-                    {liveCourses.filter((c) => c.group === "skill").map((c) => (
-                      <option key={c.id} value={c.id}>{c.name}</option>
-                    ))}
-                  </optgroup>
-                  <optgroup label="Digital platforms">
-                    {liveCourses.filter((c) => c.group === "platform").map((c) => (
+                  {CATEGORIES.map((cat) => (
+                    <optgroup key={cat.id} label={cat.title}>
+                      {COURSES.filter((c) => c.category === cat.id).map((c) => (
+                        <option key={c.slug} value={c.slug}>{c.title}</option>
+                      ))}
+                    </optgroup>
+                  ))}
+                  <optgroup label="Classroom tracks">
+                    {liveCourses.map((c) => (
                       <option key={c.id} value={c.id}>{c.name}</option>
                     ))}
                   </optgroup>

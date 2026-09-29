@@ -1,41 +1,52 @@
 import { Link } from "react-router-dom";
-import { PageHero } from "../components/CourseCard";
+import Seo from "../components/market/Seo";
+import { IMAGES } from "../data/marketing/images";
+import { FOUNDER, SITE } from "../data/site";
 
 export default function About() {
   return (
     <>
-      <PageHero
-        kicker="About us"
-        title="Learn skills. Build your future."
-        text="HunarStack is a tech academy and a software house. We train students in practical digital skills, and we build web, mobile and AI products for clients. Students learn on the same standards we use for that work. Your skills can take you further—without a guaranteed job at the end."
+      <Seo
+        title="About HunarStack | Jamshoro"
+        description="HunarStack is a practical technology and freelancing academy in Jamshoro, founded by software engineer Ghulam Mujtaba."
+        path="/about"
       />
-      <main id="main">
-        <div className="wrap narrow">
-          <h2>Our name</h2>
-          <div className="meaning" style={{ margin: "16px 0 24px" }}>
-            <div className="u">هنر</div>
-            <p><b>Hunar</b> (هنر) means skill and craftsmanship in Urdu. A <b>stack</b> is what developers build with. Together they describe what we believe: real skill, applied with modern technology, can open doors anywhere in the world.</p>
+      <header className="hs-hero-mini">
+        <div className="hs-wrap">
+          <p className="hs-crumbs"><Link to="/">Home</Link> <span>/</span> <span>About</span></p>
+          <p className="hs-kicker">About</p>
+          <h1>Learn skills. Build projects. Earn online.</h1>
+          <p className="hs-lead">HunarStack is a modern technology and freelancing academy in Jamshoro. It is not a traditional tuition centre. Students learn by making things.</p>
+        </div>
+      </header>
+      <main id="main" className="hs-page">
+        <div className="hs-wrap" style={{ display: "grid", gap: 22 }}>
+          <section className="hs-split">
+            <img src={IMAGES.founder} alt="Ghulam Mujtaba, founder of HunarStack" />
+            <div>
+              <h2>{FOUNDER.name}</h2>
+              <p>Founder. Software engineer and experienced mobile application developer. Computer Science background from the University of Sindh, with more than ten years of professional software development.</p>
+              <p>Top Rated on Upwork. 100% Job Success. $20K+ in his own freelancing earnings. 17 Upwork jobs. 781 hours. 70+ apps delivered for international clients, across iOS, Android, Flutter, React Native, AI/ML, Firebase, APIs, AWS, App Store, Google Play and RevenueCat.</p>
+              <p>Learn from someone who has actually worked with international clients. Those numbers describe his career. They are not a forecast for students.</p>
+              <Link className="hs-btn hs-btn-primary" to="/journey">Read My Freelancing Journey →</Link>
+            </div>
+          </section>
+          <section className="hs-grid-3">
+            <article className="hs-card"><h3>Beginners</h3><p>You can start without a technical background. Curiosity and steady practice are enough.</p></article>
+            <article className="hs-card"><h3>Already technical</h3><p>If you already code or design, use the time for portfolio projects, freelancing workflows and AI tools.</p></article>
+            <article className="hs-card"><h3>Jamshoro</h3><p>{SITE.address}. Visit the academy, or start on WhatsApp.</p></article>
+          </section>
+          <section className="hs-prose">
+            <h2>What the name means</h2>
+            <p><b>Hunar</b> means skill. A stack is how modern software is built. Together they describe the academy: useful skill, applied with current tools, aimed at real projects.</p>
+            <h2>What we will not say</h2>
+            <p>We do not promise clients, jobs, views or income. We teach you to learn, build, practise, create a portfolio, understand platforms and look for opportunities.</p>
+          </section>
+          <div className="hs-actions">
+            <Link className="hs-btn hs-btn-primary" to="/enrol">Enroll Now →</Link>
+            <Link className="hs-btn hs-btn-ghost" to="/contact">Book a Visit</Link>
+            <a className="hs-btn hs-btn-green" href={SITE.whatsapp}>Talk on WhatsApp</a>
           </div>
-          <h2>Our mission</h2>
-          <p>To give people a clear path from learning to earning—learn a skill, build something real, create a portfolio, understand freelancing, and pursue opportunities. For clients, to deliver dependable software built by well-trained teams.</p>
-          <p>We do not guarantee jobs, clients or income. We promise a practical pathway and honest teaching.</p>
-          <h2>What we do</h2>
-          <div className="grid auto-grid">
-            <div className="card"><h3>Academy</h3><p>Practical skill tracks, plus separate courses for earning on digital platforms—using AI as an assistant, not a shortcut that skips the work.</p></div>
-            <div className="card"><h3>Real projects</h3><p>Students practise on live briefs. The best graduates may join client work—never automatically.</p></div>
-            <div className="card"><h3>Software house</h3><p>AI solutions, web and mobile apps, and dedicated developers for international clients.</p></div>
-          </div>
-          <h2>What we value</h2>
-          <ul>
-            <li><b>Skill first.</b> We teach what is used in real work, not only theory.</li>
-            <li><b>Clarity.</b> Written scopes, honest timelines and plain language.</li>
-            <li><b>Craft.</b> Clean code and careful design, every time.</li>
-            <li><b>Opportunity.</b> We measure success by what our students and clients achieve—not by slogans.</li>
-          </ul>
-          <p className="btns">
-            <Link className="btn btn-main" to="/enrol">Apply to study</Link>
-            <Link className="btn btn-ghost" to="/contact">Start a project</Link>
-          </p>
         </div>
       </main>
     </>

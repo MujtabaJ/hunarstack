@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HunarStack — 50-image campaign</title>
+  <style>
+    :root { --navy:#0F2747; --teal:#12A594; --cream:#FFF8EF; --ink:#241c16; --line:#d7e3f4; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font: 16px/1.5 system-ui, sans-serif; background: #f4f7fb; color: var(--ink); }
+    header { padding: 28px 6vw 10px; }
+    h1 { font-size: 28px; margin: 0 0 6px; }
+    .muted { color: #5a6578; }
+    nav { display: flex; gap: 10px; flex-wrap: wrap; padding: 0 6vw 16px; }
+    nav a { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; text-decoration: none; color: inherit; font-weight: 700; font-size: 13px; }
+    section { padding: 8px 6vw 28px; }
+    h2 { margin: 0 0 12px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+    .grid a { background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); text-decoration: none; color: inherit; }
+    .grid img { width: 100%; height: auto; display: block; }
+    .grid span { display: block; padding: 8px; font-size: 12px; font-weight: 700; }
+    .a { background: #0b1c33; color: #e8eef8; }
+    .b { background: var(--cream); }
+    .wide img { width: 100%; border-radius: 12px; border: 1px solid var(--line); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>HunarStack Tech Academy — 50 posts, two concepts</h1>
+    <p class="muted">Concept A: PKR 2,000–3,000 professional · Concept B: PKR 1,000–2,000 students. Do not mix.</p>
+  </header>
+  <nav>
+    <a href="#a">Professional 25</a>
+    <a href="#b">Students 25</a>
+    <a href="#ban">Banners</a>
+    <a href="../README.md">README</a>
+  </nav>
+  <section>
+    <h2>Contact sheets</h2>
+    <p class="wide"><img src="concept-a-25.png" alt="Concept A" /></p>
+    <p class="wide"><img src="concept-b-25.png" alt="Concept B" /></p>
+  </section>
+  <section class="a" id="a">
+    <h2>Concept A — professional (square)</h2>
+    <div class="grid" id="ga"></div>
+  </section>
+  <section class="b" id="b">
+    <h2>Concept B — students (square)</h2>
+    <div class="grid" id="gb"></div>
+  </section>
+  <section id="ban">
+    <h2>Banners 1200×628</h2>
+    <p class="wide"><img src="banners-a.png" alt="Professional banners" /></p>
+    <p class="wide"><img src="banners-b.png" alt="Student banners" /></p>
+  </section>
+  <script>
+    const A = ["A01_build-your-digital-future","A02_learn-build-grow","A03_learn-to-code","A04_first-website","A05_learn-ai","A06_curious-freelancing","A07_online-work","A08_dont-just-learn","A09_new-doors","A10_student-today","A11_her-future","A12_work-from-anywhere","A13_code-plus-ai","A14_creativity-skill","A15_digital-products","A16_less-theory","A17_confident-tech","A18_start-with-a-skill","A19_degree-plus-skills","A20_graduated","A21_invest-in-a-skill","A22_one-skill","A23_not-out-of-reach","A24_admissions-pro","A25_digital-journey"];
+    const B = ["B01_welcome","B02_start-early","B03_matric","B04_college","B05_more-than-books","B06_computers-confidence","B07_digital-generation","B08_dear-parents","B09_let-her-learn","B10_confident-girls","B11_school-bag-laptop","B12_books-technology","B13_learn-confidence","B14_digital-age-class","B15_first-step-tech","B16_students-can-code","B17_creativity-grow","B18_next-gen-ai","B19_after-school","B20_student-friendly-fee","B21_small-step","B22_every-expert","B23_digital-future-kids","B24_admissions-students","B25_their-future"];
+    const cell = (folder, f) => `<a href="../posts/${folder}/square/${f}.png"><img src="../posts/${folder}/square/${f}.png" alt="${f}" /><span>${f.replace(/_/g," ")}</span></a>`;
+    document.getElementById("ga").innerHTML = A.map(f => cell("professional", f)).join("");
+    document.getElementById("gb").innerHTML = B.map(f => cell("students", f)).join("");
+  </script>
+</body>
+</html>

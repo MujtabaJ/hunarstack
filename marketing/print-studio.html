@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HunarStack print studio — Ghulam Mujtaba</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0F2747; --teal: #12A594; --amber: #F2A516; --blue: #5B8FD6;
+      --ink: #152038; --mute: #3a4560; --bg: #e8eef6; --paper: #fff; --line: #d7e3f4; --ice: #f7fbff;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 Nunito, system-ui, sans-serif; }
+    h1, h2, h3 { font-family: Outfit, sans-serif; letter-spacing: -.03em; line-height: 1.12; margin: 0; }
+    .chrome { position: sticky; top: 0; z-index: 20; background: #fff; border-bottom: 1px solid var(--line); }
+    .chrome-inner { width: min(1180px, calc(100% - 28px)); margin: 0 auto; padding: 12px 0; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .logo { display: flex; align-items: center; gap: 8px; font: 800 18px/1 Outfit, sans-serif; text-decoration: none; color: inherit; margin-right: auto; }
+    .logo b { color: var(--teal); }
+    .who { font-size: 13px; color: var(--mute); }
+    .chrome a.btn, .chrome button {
+      border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px;
+      font: 700 13px/1.2 Outfit, sans-serif; background: #fff; color: var(--ink); text-decoration: none; cursor: pointer;
+    }
+    .chrome a.btn.main, button.print-one { background: var(--navy); color: #fff; border-color: var(--navy); }
+    button.print-one { border: 0; border-radius: 999px; padding: 8px 14px; font: 700 12px/1 Outfit, sans-serif; cursor: pointer; background: var(--teal); }
+    .jumps { width: min(1180px, calc(100% - 28px)); margin: 16px auto 8px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .jumps a { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; font: 700 12px/1 Outfit, sans-serif; color: var(--ink); text-decoration: none; }
+    .note { width: min(1180px, calc(100% - 28px)); margin: 0 auto 22px; color: var(--mute); font-size: 14px; }
+    .stage { width: min(1180px, calc(100% - 28px)); margin: 0 auto 48px; }
+    .piece-head { display: flex; justify-content: space-between; gap: 12px; align-items: end; margin: 0 0 10px; }
+    .piece-head p { margin: 4px 0 0; color: var(--mute); font-size: 13px; }
+    .sheet-wrap { background: #cfd8e6; border-radius: 16px; padding: 16px; overflow: auto; }
+    .word { font-family: Outfit, sans-serif; font-weight: 800; letter-spacing: -.04em; }
+    .word span { color: var(--teal); }
+    .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pills i { font-style: normal; font: 800 11px/1 Outfit, sans-serif; letter-spacing: .08em; text-transform: uppercase; border: 1px solid currentColor; border-radius: 999px; padding: 6px 10px; }
+    .mark { width: 54px; height: 54px; border-radius: 14px; display: block; }
+    .tiny { font-size: 12px; color: var(--mute); }
+    .footline { font: 700 13px/1.4 Outfit, sans-serif; }
+
+    #banner-sheet { width: 100%; aspect-ratio: 10 / 4; min-width: 920px; position: relative; overflow: hidden; border-radius: 6px; color: #fff; }
+    #banner-sheet .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 78% 40%; }
+    #banner-sheet .veil { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15,39,71,.92) 0%, rgba(15,39,71,.58) 38%, rgba(15,39,71,.16) 68%, rgba(15,39,71,.06) 100%); }
+    #banner-sheet .copy { position: relative; z-index: 2; height: 100%; padding: 5.5% 5%; display: flex; flex-direction: column; justify-content: space-between; max-width: 58%; }
+    #banner-sheet h1 { font-size: clamp(40px, 5.6vw, 78px); }
+    #banner-sheet .lead { font-size: clamp(14px, 1.45vw, 20px); max-width: 34em; color: #e8eef8; }
+    #banner-sheet .url { font: 800 clamp(16px, 2vw, 28px)/1 Outfit, sans-serif; color: var(--amber); }
+
+    #poster-sheet { width: min(520px, 100%); aspect-ratio: 3 / 4; margin: 0 auto; position: relative; overflow: hidden; border-radius: 6px; color: #fff; }
+    #poster-sheet .bg, #rollup-sheet .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    #poster-sheet .bg { object-position: 55% 18%; }
+    #poster-sheet .veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,39,71,.08) 0%, rgba(15,39,71,.2) 40%, rgba(15,39,71,.9) 78%, #0F2747 100%); }
+    #poster-sheet .copy { position: relative; z-index: 2; height: 100%; padding: 7%; display: flex; flex-direction: column; justify-content: flex-end; }
+    #poster-sheet h1 { font-size: 42px; margin: 10px 0 8px; }
+    #poster-sheet .url { color: var(--amber); font: 800 20px/1 Outfit, sans-serif; }
+
+    #rollup-sheet { width: min(280px, 100%); aspect-ratio: 2 / 5; margin: 0 auto; position: relative; overflow: hidden; border-radius: 6px; color: #fff; }
+    #rollup-sheet .bg { object-position: 50% 20%; }
+    #rollup-sheet .veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,39,71,.15), rgba(15,39,71,.92)); }
+    #rollup-sheet .copy { position: relative; z-index: 2; height: 100%; padding: 18px 16px; display: flex; flex-direction: column; justify-content: flex-end; gap: 10px; }
+    #rollup-sheet h1 { font-size: 28px; }
+
+    .brochure { width: 100%; min-width: 900px; aspect-ratio: 297 / 210; display: grid; grid-template-columns: 1fr 1fr 1fr; background: #fff; border-radius: 6px; overflow: hidden; }
+    .brochure.inside { background: var(--ice); }
+    .panel { padding: 22px 18px; border-right: 1px dashed #c9d6e8; display: flex; flex-direction: column; gap: 10px; }
+    .panel:last-child { border-right: 0; }
+    .panel.cover { padding: 0; color: #fff; position: relative; }
+    .panel.cover img.hero { width: 100%; height: 52%; object-fit: cover; }
+    .panel.cover .pad { padding: 16px; background: var(--navy); flex: 1; }
+    .panel.cover h2 { font-size: 26px; }
+    .panel ul { margin: 0; padding: 0 0 0 16px; color: var(--mute); font-size: 12.5px; }
+    .steps { display: grid; gap: 8px; }
+    .steps div { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; }
+    .steps b { display: block; font: 800 12px/1.2 Outfit, sans-serif; }
+
+    #flyer-sheet, #a4-sheet { margin: 0 auto; background: #fff; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; }
+    #flyer-sheet { width: min(420px, 100%); aspect-ratio: 148 / 210; }
+    #a4-sheet { width: min(620px, 100%); aspect-ratio: 210 / 297; }
+    .topnavy { background: var(--navy); color: #fff; padding: 22px 22px 18px; }
+    .bodypad { padding: 16px 22px 18px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .tracks { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 12px; }
+    .tracks span { background: var(--ice); border-radius: 8px; padding: 7px 8px; }
+    .foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .foot img { width: 78px; height: 78px; }
+
+    #handout-sheet { width: min(720px, 100%); aspect-ratio: 210 / 297; margin: 0 auto; background: #fff; border-radius: 6px; padding: 28px 30px; display: flex; flex-direction: column; gap: 14px; }
+    #handout-sheet header { display: flex; justify-content: space-between; align-items: center; }
+    #handout-sheet h1 { font-size: 32px; }
+    #handout-sheet .cols { display: grid; grid-template-columns: 1.2fr .8fr; gap: 16px; }
+    #handout-sheet .box { background: var(--ice); border-radius: 14px; padding: 14px; }
+    #handout-sheet ol { margin: 8px 0 0; padding-left: 18px; color: var(--mute); font-size: 13px; }
+
+    .cards { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+    .card { width: 350px; height: 200px; border-radius: 8px; overflow: hidden; position: relative; background: #fff; }
+    .card.front { display: grid; grid-template-columns: 18px 1fr; }
+    .card.front .bar { background: var(--amber); }
+    .card.front .pad { padding: 18px 20px; display: flex; flex-direction: column; }
+    .card.back { background: var(--navy); color: #fff; padding: 18px 20px; display: flex; flex-direction: column; justify-content: space-between; }
+    .card .who b { display: block; font: 800 18px/1.2 Outfit, sans-serif; }
+    .card .who span { color: var(--mute); font-size: 13px; }
+    .card.back .meta { color: #c6d4e8; font-size: 14px; }
+
+    #window-sheet { width: min(480px, 100%); aspect-ratio: 1; margin: 0 auto; background: var(--navy); color: #fff; border-radius: 6px; padding: 28px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 12px; }
+    #window-sheet h1 { font-size: 38px; }
+    #window-sheet img.qr { width: 140px; height: 140px; background: #fff; padding: 8px; border-radius: 12px; }
+    #tent-sheet { width: min(520px, 100%); aspect-ratio: 2 / 1; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; border-radius: 6px; overflow: hidden; }
+    #tent-sheet .a { background: var(--navy); color: #fff; padding: 20px; display: flex; flex-direction: column; justify-content: center; }
+    #tent-sheet .b { background: var(--ice); padding: 20px; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
+
+    .socials { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .sq, .st, .cover16 { border-radius: 8px; overflow: hidden; position: relative; color: #fff; }
+    .sq { aspect-ratio: 1; }
+    .st { aspect-ratio: 9 / 16; max-width: 280px; margin: 0 auto; }
+    .cover16 { aspect-ratio: 16 / 9; }
+    .sq img, .st img, .cover16 img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .sq .veil, .st .veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,39,71,.18), rgba(15,39,71,.9)); }
+    .cover16 .veil { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15,39,71,.88), rgba(15,39,71,.22)); }
+    .sq .copy, .st .copy { position: relative; z-index: 2; height: 100%; padding: 18px; display: flex; flex-direction: column; justify-content: flex-end; }
+    .cover16 .copy { position: relative; z-index: 2; height: 100%; padding: 28px; display: flex; flex-direction: column; justify-content: center; max-width: 62%; }
+    .sq h2, .st h2 { font-size: 26px; }
+    .cover16 h2 { font-size: 32px; }
+
+    @media print {
+      .chrome, .jumps, .note, .piece-head { display: none !important; }
+      body { background: #fff; }
+      @page { margin: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="chrome">
+    <div class="chrome-inner">
+      <a class="logo" href="index.html"><img src="assets/logo-mark.svg" width="28" height="28" alt="" />hunar<b>stack</b> print</a>
+      <span class="who">Ghulam Mujtaba · gm@hunarstack.com · 0300 3740708</span>
+      <a class="btn" href="digital-studio.html">Digital kit</a>
+      <a class="btn main" href="https://hunarstack.com" target="_blank" rel="noopener">hunarstack.com</a>
+    </div>
+  </div>
+
+  <nav class="jumps">
+    <a href="#banner">10×4 ft banner</a>
+    <a href="#poster">A1 poster</a>
+    <a href="#rollup">Roll-up</a>
+    <a href="#brochure-out">Brochure</a>
+    <a href="#a4">A4 flyer</a>
+    <a href="#flyer">A5 flyer</a>
+    <a href="#handout">One-pager</a>
+    <a href="#cards">Cards</a>
+    <a href="#window">Window QR</a>
+    <a href="#tent">Table tent</a>
+    <a href="#social">Social images</a>
+  </nav>
+  <p class="note">Every piece already has your name, <b>gm@hunarstack.com</b> and <b>0300 3740708</b>. Click <b>Print this piece</b> → Save as PDF → uncheck headers. Take the PDF to a flex shop. Website A/CNAME records stay on Vercel — this file is only for print.</p>
+
+  <section class="stage" id="banner">
+    <div class="piece-head">
+      <div>
+        <h2>Wall banner — 10 ft × 4 ft</h2>
+        <p>Outdoor flex, full bleed, eyelets every 12 inches. Hang above the door or on a campus stall back wall. Also prints as 8×3 ft if the shop prefers that size.</p>
+      </div>
+      <button class="print-one" type="button" onclick="printOne('banner-sheet')">Print this piece</button>
+    </div>
+    <div class="sheet-wrap">
+      <article class="sheet" id="banner-sheet">
+        <img class="bg" src="assets/banner-wall-photo.png" alt="" />
+        <div class="veil"></div>
+        <div class="copy">
+          <div class="pills"><i>Learn</i><i>Build</i><i>Freelance</i><i>Earn</i><i>Grow</i></div>
+          <div>
+            <p class="word" style="font-size:22px;margin:0 0 8px">hunar<span>stack</span></p>
+            <h1>Learn skills.<br>Build your future.</h1>
+            <p class="lead">A practical academy in Jamshoro for AI, web, mobile, design and freelance platforms. We do not promise clients or income. We show you the path.</p>
+          </div>
+          <div>
+            <div class="url">hunarstack.com</div>
+            <div class="footline">Ghulam Mujtaba · gm@hunarstack.com · 0300 3740708</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="stage" id="poster">
+    <div class="piece-head">
+      <div>
+        <h2>Indoor poster — A1 or 2×3 ft foam board</h2>
+        <p>Hang in reception, classroom or a hostel notice board.</p>
+      </div>
+      <button class="print-one" type="button" onclick="printOne('poster-sheet')">Print this piece</button>
+    </div>
+    <div class="sheet-wrap">
+      <article class="sheet" id="poster-sheet">
+        <img class="bg" src="assets/poster-portrait-photo.png" alt="" />
+        <div class="veil"></div>
+        <div class="copy">
+          <p class="word">hunar<span>stack</span></p>
+          <h1>Your laptop can be a classroom.</h1>
+          <p>Learn a skill. Build a project. Make a portfolio. Then learn how global platforms work.</p>
+          <p class="url">hunarstack.com</p>
+          <p class="footline">Ghulam Mujtaba · 0300 3740708</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="stage" id="rollup">
+    <div class="piece-head">
+      <div>
+        <h2>Roll-up standee — 2 ft × 5 ft</h2>
+        <p>For campus expos and open days. Print on roll-up media with a stand.</p>
+      </div>
+      <button class="print-one" type="button" onclick="printOne('rollup-sheet')">Print this piece</button>
+    </div>
+    <div class="sheet-wrap">
+      <article class="sheet" id="rollup-sheet">
+        <img class="bg" src="assets/poster-portrait-photo.png" alt="" />
+        <div class="veil"></div>
+        <div class="copy">
+          <p class="word">hunar<span>stack</span></p>
+          <h1>Learn. Build. Then go find the work.</h1>
+          <p>Scan hunarstack.com</p>
+          <img src="assets/qr-hunarstack.png" alt="" width="92" height="92" style="background:#fff;padding:6px;border-radius:10px" />
+          <p class="footline">Ghulam Mujtaba · 0300 3740708</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="stage" id="brochure-out">
+    <div class="piece-head">
+      <div>
+        <h2>A4 tri-fold brochure — outside</h2>
+        <p>Landscape A4, both sides, 170–250 gsm, roll fold. Flap · back · cover.</p>
+      </div>
+      <button class="print-one" type="button" onclick="printOne('brochure-out-sheet')">Print this piece</button>
+    </div>
+    <div class="sheet-wrap">
+      <article class="sheet brochure" id="brochure-out-sheet">
+        <div class="panel">
+          <img class="mark" src="assets/logo-mark.svg" alt="" />
+          <h3>Scan to start</h3>
+          <img src="assets/qr-hunarstack.png" alt="QR to hunarstack.com" width="120" height="120" />
+          <p class="tiny">Create an account. Open a track. Submit your first project.</p>
+          <p class="tiny">Ghulam Mujtaba<br>gm@hunarstack.com<br>0300 3740708<br>Jamshoro · Mon–Sat 10:00–18:00</p>
+        </div>
+        <div class="panel">
+          <h3>What we will never do</h3>
+          <ul>
+            <li>Promise a salary, clients or “monthly dollars”</li>
+            <li>Invent student testimonials or placements</li>
+            <li>Sell a magic AI that works instead of you</li>
+          </ul>
+          <h3 style="margin-top:12px">What we will do</h3>
+          <ul>
+            <li>Teach a real skill, week by week</li>
+            <li>Make you build things you can show</li>
+            <li>Show how Upwork, Fiverr and LinkedIn actually work</li>
+          </ul>
+        </div>
+        <div class="panel cover">
+          <img class="hero" src="assets/brochure-cover-photo.png" alt="" />
+          <div class="pad">
+            <p class="word" style="font-size:20px">hunar<span>stack</span></p>
+            <h2>Learn. Build. Then go find the work.</h2>
+            <p style="margin:8px 0 0;font-size:13px;color:#d5e2f4">Ghulam Mujtaba · hunarstack.com</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="stage" id="brochure-in">
+    <div class="piece-head">
+      <div>
+        <h2>A4 tri-fold brochure — inside</h2>
+        <p>Print on the reverse. Panels: tracks · path · how to join.</p>
+      </div>
+      <button class="print-one" type="button" onclick="printOne('brochure-in-sheet')">Print this piece</button>
+    </div>
+    <div class="sheet-wrap">
+      <article class="sheet brochure inside" id="brochure-in-sheet">
+        <div class="panel">
+          <h3>Skill tracks</h3>
+          <ul>
+            <li>AI &amp; Generative AI — 12 weeks</li>
+            <li>Web Development — 12 weeks</li>
+            <li>Mobile App Development — 12 weeks</li>
+            <li>Software Development — 16 weeks</li>
+            <li>UI/UX — 8 weeks</li>
+            <li>Cloud &amp; APIs — 10 weeks</li>
+            <li>AI Tools &amp; Automation — 6 weeks</li>
+            <li>Freelancing — 6 weeks</li>
+            <li>Remote Work — 4 weeks</li>
+            <li>Real-world Projects — 8 weeks</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>The path</h3>
+          <div class="steps">
+            <div><b>01 Learn</b><span class="tiny">One practical digital skill.</span></div>
+            <div><b>02 Build</b><span class="tiny">Projects you can open and demo.</span></div>
+            <div><b>03 Portfolio</b><span class="tiny">Proof, not playlists.</span></div>
+            <div><b>04 Freelance</b><span class="tiny">How platforms and proposals work.</span></div>
+            <div><b>05 Earn &amp; grow</b><span class="tiny">Possible after skill and outreach — never guaranteed.</span></div>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>Platform courses</h3>
+          <p class="tiny">Upwork, Fiverr, Freelancer, LinkedIn, remote boards. AI can draft. You still check, apply and deliver.</p>
+          <h3>How to join</h3>
+          <ol class="tiny" style="padding-left:16px">
+            <li>Open hunarstack.com</li>
+            <li>Create your account</li>
+            <li>Pick a track</li>
+            <li>WhatsApp Ghulam Mujtaba on 0300 3740708 about fees</li>
+          </ol>
+          <p class="tiny" style="margin-top:auto">gm@hunarstack.com · Jamshoro</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="stage" id="a4">
+    <div class="piece-head">
+      <div>
+        <h2>A4 flyer</h2>
+        <p>Print 50–100 on 150–300 gsm. Leave at tuition centres and campus societies (with permission).</p>
+      </div>
+      <button class="print-one" type="button" onclick="printOne('a4-sheet')">Print this piece</button>
+    </div>
+    <div class="sheet-wrap">
+      <article class="sheet" id="a4-sheet">
+        <div class="topnavy">
+          <p class="word">hunar<span>stack</span></p>
+          <h1 style="font-size:36px;margin-top:8px">Stop collecting certificates. Start building work.</h1>
+        </div>
+        <div class="bodypad">
+          <p class="tiny" style="font-size:15px">HunarStack is Ghulam Mujtaba’s practical academy in Jamshoro for AI, technology and freelance platforms. We show the path. We do not sell a fantasy income.</p>
+          <div class="tracks">
+            <span>AI &amp; Gen AI</span><span>Web</span><span>Mobile</span><span>UI/UX</span>
+            <span>Cloud</span><span>Automation</span><span>Upwork</span><span>Fiverr</span>
+          </div>
+          <div class="foot">
+            <div>
+              <b class="footline">hunarstack.com</b>
+              <div class="tiny">Ghulam Mujtaba · gm@hunarstack.com<br>0300 3740708 · Jamshoro</div>
+            </div>
+            <img src="assets/qr-hunarstack.png" alt="QR" />
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="stage" id="flyer">
+    <div class="piece-head">
+      <div>
+        <h2>A5 handbill</h2>
+        <p>Print 2-up on A4, cut in half. Cheap volume for campus desks.</p>
+      </div>
+      <button class="print-one" type="button" onclick="printOne('flyer-sheet')">Print this piece</button>
+    </div>
+    <div class="sheet-wrap">
+      <article class="sheet" id="flyer-sheet">
+        <div class="topnavy">
+          <p class="word">hunar<span>stack</span></p>
+          <h1 style="font-size:28px;margin-top:8px">Learn a skill. Build a project. Show it.</h1>
+        </div>
+        <div class="bodypad">
+          <p class="tiny">No promised clients. No fake dollars. A path you can walk.</p>
+          <div class="tracks">
+            <span>AI</span><span>Web</span><span>Mobile</span><span>Design</span>
+            <span>Cloud</span><span>Upwork</span><span>Fiverr</span><span>LinkedIn</span>
+          </div>
+          <div class="foot">
+            <div class="tiny">Ghulam Mujtaba<br>0300 3740708<br>gm@hunarstack.com</div>
+            <img src="assets/qr-hunarstack.png" alt="QR" />
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="stage" id="handout">
+    <div class="piece-head">
+      <div>
+        <h2>A4 one-pager for parents</h2>
+        <p>Give this to anyone who asks “what is this academy?”</p>
+      </div>
+      <button class="print-one" type="button" onclick="printOne('handout-sheet')">Print this piece</button>
+    </div>
+    <div class="sheet-wrap">
+      <article class="sheet" id="handout-sheet">
+        <header>
+          <div>
+            <p class="word" style="font-size:22px">hunar<span>stack</span></p>
+            <h1>Learn skills. Build your future.</h1>
+          </div>
+          <img class="mark" src="assets/logo-mark.svg" alt="" />
+        </header>
+        <p class="tiny" style="font-size:15px">HunarStack is a digital academy in Jamshoro founded by Ghulam Mujtaba. We teach practical skills — then show how those skills become projects, portfolios and freelance practice. We do not promise clients, jobs or income.</p>
+        <div class="cols">
+          <div>
+            <h3>Who it is for</h3>
+            <ul>
+              <li>Students tired of theory-only classes</li>
+              <li>Beginners with a laptop and curiosity</li>
+              <li>Working people who want a second skill</li>
+            </ul>
+            <h3 style="margin-top:12px">The loop we teach</h3>
+            <ol>
+              <li>Learn one skill.</li>
+              <li>Build a real project.</li>
+              <li>Put it in a portfolio.</li>
+              <li>Learn how platforms and proposals work.</li>
+              <li>Pursue paid work yourself. We do not place it for you.</li>
+            </ol>
+          </div>
+          <div class="box">
+            <h3>Talk to us</h3>
+            <p class="tiny"><b>Ghulam Mujtaba</b><br>gm@hunarstack.com<br>0300 3740708<br>Jamshoro · Mon–Sat 10:00–18:00</p>
+            <img src="assets/qr-hunarstack.png" alt="QR" width="120" height="120" />
+            <p class="tiny">hunarstack.com</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="stage" id="cards">
+    <div class="piece-head">
+      <div>
+        <h2>Business cards — 89×51 mm, 350 gsm matte</h2>
+        <p>Print 200. Front name, back contact.</p>
+      </div>
+      <button class="print-one" type="button" onclick="printOne('cards-sheet')">Print this piece</button>
+    </div>
+    <div class="sheet-wrap" id="cards-sheet">
+      <div class="cards">
+        <article class="sheet card front">
+          <div class="bar"></div>
+          <div class="pad">
+            <img class="mark" src="assets/logo-mark.svg" alt="" width="48" height="48" />
+            <p class="word" style="font-size:22px;margin:8px 0 0">hunar<span>stack</span></p>
+            <div class="who" style="margin-top:auto">
+              <b>Ghulam Mujtaba</b>
+              <span>Founder · HunarStack Academy</span>
+            </div>
+          </div>
+        </article>
+        <article class="sheet card back">
+          <p class="word" style="font-size:20px">hunar<span>stack</span></p>
+          <div class="meta">
+            <div>hunarstack.com</div>
+            <div>gm@hunarstack.com</div>
+            <div>0300 3740708</div>
+            <div>Jamshoro, Pakistan</div>
+          </div>
+          <p style="font-size:12px;opacity:.85">We do not promise clients or income.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage" id="window">
+    <div class="piece-head">
+      <div>
+        <h2>Door / window sticker — 12×12 in vinyl</h2>
+        <p>Eye height on glass, QR facing the street.</p>
+      </div>
+      <button class="print-one" type="button" onclick="printOne('window-sheet')">Print this piece</button>
+    </div>
+    <div class="sheet-wrap">
+      <article class="sheet" id="window-sheet">
+        <p class="word" style="font-size:28px">hunar<span>stack</span></p>
+        <h1>Scan. Start learning.</h1>
+        <img class="qr" src="assets/qr-hunarstack.png" alt="QR to hunarstack.com" />
+        <p>hunarstack.com</p>
+        <p class="footline">0300 3740708</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="stage" id="tent">
+    <div class="piece-head">
+      <div>
+        <h2>Table tent — A5 landscape, fold in half</h2>
+        <p>Reception desk and campus stall.</p>
+      </div>
+      <button class="print-one" type="button" onclick="printOne('tent-sheet')">Print this piece</button>
+    </div>
+    <div class="sheet-wrap">
+      <article class="sheet" id="tent-sheet">
+        <div class="a">
+          <p class="word">hunar<span>stack</span></p>
+          <h2 style="font-size:26px;margin-top:8px">Learn skills. Build your future.</h2>
+        </div>
+        <div class="b">
+          <b>Ghulam Mujtaba</b>
+          <span class="tiny">gm@hunarstack.com · 0300 3740708</span>
+          <span class="tiny">hunarstack.com · Jamshoro · Mon–Sat 10:00–18:00</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="stage" id="social">
+    <div class="piece-head">
+      <div>
+        <h2>Designed social images</h2>
+        <p>Screenshot at full size. Pair with captions in the digital kit. Cover = LinkedIn + Facebook. Squares = Instagram. Story = Reels / TikTok still.</p>
+      </div>
+    </div>
+    <div class="sheet-wrap" style="background:transparent;padding:0">
+      <div class="socials">
+        <article class="sq">
+          <img src="assets/social-square-campus.png" alt="" />
+          <div class="veil"></div>
+          <div class="copy">
+            <p class="word">hunar<span>stack</span></p>
+            <h2>Learn together. Build in public.</h2>
+            <p>hunarstack.com · 0300 3740708</p>
+          </div>
+        </article>
+        <article class="sq">
+          <img src="assets/social-square-desk.png" alt="" />
+          <div class="veil"></div>
+          <div class="copy">
+            <p class="word">hunar<span>stack</span></p>
+            <h2>Don’t just watch lessons. Build things.</h2>
+            <p>gm@hunarstack.com</p>
+          </div>
+        </article>
+        <article class="sq">
+          <img src="assets/social-freelance-call.png" alt="" />
+          <div class="veil"></div>
+          <div class="copy">
+            <p class="word">hunar<span>stack</span></p>
+            <h2>We teach the path. We don’t sell a salary.</h2>
+            <p>Ghulam Mujtaba · Jamshoro</p>
+          </div>
+        </article>
+      </div>
+      <div style="height:16px"></div>
+      <article class="cover16">
+        <img src="assets/cover-classroom.png" alt="" />
+        <div class="veil"></div>
+        <div class="copy">
+          <p class="word">hunar<span>stack</span></p>
+          <h2>Learn · Build · Freelance · Earn · Grow</h2>
+          <p>Founded by Ghulam Mujtaba · hunarstack.com · 0300 3740708</p>
+        </div>
+      </article>
+      <div style="height:16px"></div>
+      <article class="st">
+        <img src="assets/social-story-window.png" alt="" />
+        <div class="veil"></div>
+        <div class="copy">
+          <p class="word">hunar<span>stack</span></p>
+          <h2>Your laptop can be more than a laptop.</h2>
+          <p>WhatsApp 0300 3740708</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <script>
+    function printOne(id) {
+      const node = document.getElementById(id);
+      if (!node) { window.print(); return; }
+      const hold = document.createElement("div");
+      hold.style.cssText = "position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center";
+      hold.appendChild(node.cloneNode(true));
+      document.body.appendChild(hold);
+      const clean = () => hold.remove();
+      window.addEventListener("afterprint", clean, { once: true });
+      window.print();
+      setTimeout(clean, 800);
+    }
+  </script>
+</body>
+</html>

@@ -1,28 +1,28 @@
 :root {
-  --bg: #f7fbff;
-  --bg-soft: #eef3ff;
-  --bg-blue: #e5f4ff;
-  --bg-mint: #e7faf4;
-  --ink: #152038;
-  --mute: #3a4560;
+  --bg: #f8fafc;
+  --bg-soft: #f1f5f9;
+  --bg-blue: #eff6ff;
+  --bg-mint: #ecfdf5;
+  --ink: #0f172a;
+  --mute: #475569;
   --card: #ffffff;
-  --line: #d7e3f4;
-  --navy: #1e4a9a;
-  --navy-deep: #163a7a;
-  --amber: #ff6ba8;
-  --amber-ink: #fff;
-  --teal: #3b9afa;
-  --teal-text: #1570c9;
+  --line: #e2e8f0;
+  --navy: #0f172a;
+  --navy-deep: #0b1220;
+  --amber: #fbbf24;
+  --amber-ink: #0f172a;
+  --teal: #2563eb;
+  --teal-text: #1d4ed8;
   --on: #ffffff;
-  --blue: #3b9afa;
-  --violet: #7c7aff;
-  --cyan: #2ad4e0;
-  --pink: #ff6ba8;
-  --green: #22c58b;
-  --gradient-primary: linear-gradient(135deg, #3b9afa 0%, #5b9dff 42%, #7c7aff 100%);
-  --gradient-ai: linear-gradient(135deg, #7c7aff 0%, #ff6ba8 52%, #3b9afa 100%);
-  --gradient-growth: linear-gradient(135deg, #2ad4e0 0%, #3b9afa 55%, #7c7aff 100%);
-  --gradient-opportunity: linear-gradient(135deg, #3b9afa 0%, #2ad4e0 100%);
+  --blue: #3b82f6;
+  --violet: #2563eb;
+  --cyan: #06b6d4;
+  --pink: #fbbf24;
+  --green: #10b981;
+  --gradient-primary: linear-gradient(135deg, #2563eb 0%, #3b82f6 55%, #06b6d4 100%);
+  --gradient-ai: linear-gradient(135deg, #2563eb 0%, #06b6d4 48%, #fbbf24 100%);
+  --gradient-growth: linear-gradient(135deg, #06b6d4 0%, #2563eb 70%);
+  --gradient-opportunity: linear-gradient(135deg, #2563eb 0%, #fbbf24 100%);
   --glow-primary: radial-gradient(circle, rgba(59, 154, 250, 0.38), transparent 68%);
   --glow-secondary: radial-gradient(circle, rgba(124, 122, 255, 0.32), transparent 68%);
   --glow-accent: radial-gradient(circle, rgba(42, 212, 224, 0.3), transparent 68%);
@@ -45,12 +45,12 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font: 18px/1.7 Nunito, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font: 17px/1.7 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 body.nav-open { overflow: hidden; }
 img { max-width: 100%; height: auto; display: block; }
 h1, h2, h3, h4 {
-  font-family: Outfit, system-ui, sans-serif;
+  font-family: Manrope, Inter, system-ui, sans-serif;
   line-height: 1.22;
   margin: 0;
   letter-spacing: -0.02em;
@@ -168,7 +168,7 @@ a { color: inherit; }
   gap: 8px;
   padding: 13px 22px;
   border-radius: 14px;
-  font: 800 17px/1 Nunito, sans-serif;
+  font: 800 16px/1 Manrope, Inter, sans-serif;
   text-decoration: none;
   border: 2px solid transparent;
   cursor: pointer;
@@ -338,7 +338,7 @@ a { color: inherit; }
   align-items: center;
   gap: 8px;
   font-weight: 800;
-  font-family: Outfit, system-ui, sans-serif;
+  font-family: Manrope, Inter, system-ui, sans-serif;
   letter-spacing: 0.04em;
   font-size: 13px;
 }
@@ -377,7 +377,7 @@ a { color: inherit; }
   opacity: 0.8;
 }
 .slab strong {
-  font-family: Outfit, system-ui, sans-serif;
+  font-family: Manrope, Inter, system-ui, sans-serif;
   font-size: 26px;
   letter-spacing: -0.03em;
 }
@@ -709,7 +709,7 @@ a { color: inherit; }
 .faq summary {
   cursor: pointer;
   font-weight: 700;
-  font-family: Outfit, system-ui, sans-serif;
+  font-family: Manrope, Inter, system-ui, sans-serif;
   font-size: 18px;
   letter-spacing: -0.02em;
 }
@@ -913,7 +913,7 @@ ol.weeks li {
   padding: 16px 20px;
 }
 .wn {
-  font-family: Outfit, system-ui, sans-serif;
+  font-family: Manrope, Inter, system-ui, sans-serif;
   font-weight: 800;
   color: var(--teal-text);
   font-size: 19px;

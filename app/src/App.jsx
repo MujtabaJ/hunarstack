@@ -7,7 +7,7 @@ import Protected, { Role } from "./components/Protected";
 import ScrollTop from "./components/ScrollTop";
 import Home from "./pages/Home";
 import Courses from "./pages/Courses";
-import CourseDetail from "./pages/CourseDetail";
+import CourseRouter from "./pages/CourseRouter";
 import Syllabi from "./pages/Syllabi";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -41,7 +41,13 @@ import PhotoForm from "./pages/admin/PhotoForm";
 import UserForm from "./pages/admin/UserForm";
 import ApplicationForm from "./pages/admin/ApplicationForm";
 import MessageForm from "./pages/admin/MessageForm";
+import SectionDetail from "./pages/SectionDetail";
 import NotFound from "./pages/NotFound";
+import Journey from "./pages/Journey";
+import Stories from "./pages/Stories";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
+import Faq from "./pages/Faq";
 
 function ApplicationsPage() {
   const { user } = useAuth();
@@ -65,7 +71,12 @@ export default function App() {
             <Route element={<Layout />}>
               <Route path="/" element={<Home />} />
               <Route path="/courses" element={<Courses />} />
-              <Route path="/courses/:id" element={<CourseDetail />} />
+              <Route path="/courses/:id" element={<CourseRouter />} />
+              <Route path="/journey" element={<Journey />} />
+              <Route path="/stories" element={<Stories />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/faq" element={<Faq />} />
               <Route path="/syllabi" element={<Syllabi />} />
               <Route path="/syllabi/:id" element={<Syllabi />} />
               <Route path="/explore/:sectionId" element={<SectionDetail />} />

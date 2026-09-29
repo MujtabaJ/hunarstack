@@ -2,9 +2,10 @@ import { PHOTOS } from "./visuals";
 
 export const DEFAULT_SITE = {
   contact: {
-    email: "hello@hunarstack.com",
-    phone: "+92 300 0000000",
-    address: "Lahore, Pakistan",
+    name: "Ghulam Mujtaba",
+    email: "gm@hunarstack.com",
+    phone: "0300 3740708",
+    address: "A-132 Phase 1, Society, Jamshoro, Sindh, Pakistan",
     hours: "Mon to Sat, 10:00 to 18:00 PKT",
   },
   hero: {

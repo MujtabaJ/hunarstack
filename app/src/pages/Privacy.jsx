@@ -3,7 +3,7 @@ import { useData } from "../context/DataContext";
 
 export default function Privacy() {
   const { site } = useData();
-  const email = site?.contact?.email || "hello@hunarstack.com";
+  const email = site?.contact?.email || "gm@hunarstack.com";
   return (
     <>
       <PageHero kicker="Legal" title="Privacy Policy" text="How we collect, use and protect your information. Have a lawyer review before publishing." />

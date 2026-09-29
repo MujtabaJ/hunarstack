@@ -11,7 +11,7 @@ const COPY = {
   contact: {
     kicker: "Message received",
     title: "Thank you.",
-    text: "Your note is saved in the academy inbox. In this demo nothing is emailed; an admin can read it after logging in.",
+    text: "Your note is in the academy inbox. You can also reach us on WhatsApp at 0300 3740708.",
   },
 };
 

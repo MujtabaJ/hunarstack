@@ -111,6 +111,16 @@ function withDefaults(parsed) {
     billing: c.billing || (c.group === "platform" ? "one-time" : "cohort"),
   }));
   merged.site.contact = { ...DEFAULT_SITE.contact, ...(merged.site.contact || {}) };
+  if (!merged.site.contact.email || merged.site.contact.email === "hello@hunarstack.com") {
+    merged.site.contact.email = DEFAULT_SITE.contact.email;
+  }
+  if (!merged.site.contact.phone || /0000000/.test(merged.site.contact.phone)) {
+    merged.site.contact.phone = DEFAULT_SITE.contact.phone;
+  }
+  if (!merged.site.contact.name) merged.site.contact.name = DEFAULT_SITE.contact.name;
+  if (!merged.site.contact.address || merged.site.contact.address === "Lahore, Pakistan") {
+    merged.site.contact.address = DEFAULT_SITE.contact.address;
+  }
   merged.invoices = Array.isArray(merged.invoices) ? merged.invoices : structuredClone(DEMO.invoices);
   merged.applications = (merged.applications || []).map((a) => {
     const course = matchCourse(merged.courses, a.courseId || a.track);

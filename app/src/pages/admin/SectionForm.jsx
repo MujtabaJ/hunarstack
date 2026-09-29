@@ -52,7 +52,7 @@ const EMPTY_HERO = {
   rail: [],
 };
 
-const EMPTY_CONTACT = { email: "", phone: "", address: "", hours: "" };
+const EMPTY_CONTACT = { name: "", email: "", phone: "", address: "", hours: "" };
 
 const EMPTY_ITEM = {
   id: "",
@@ -203,6 +203,7 @@ export default function SectionForm() {
           </>
         ) : isContact ? (
           <>
+            <label>Name<input value={draft.name || ""} onChange={(e) => set("name", e.target.value)} /></label>
             <label>Email<input type="email" value={draft.email || ""} onChange={(e) => set("email", e.target.value)} /></label>
             <label>Phone / WhatsApp<input value={draft.phone || ""} onChange={(e) => set("phone", e.target.value)} /></label>
             <label>Office address<input value={draft.address || ""} onChange={(e) => set("address", e.target.value)} /></label>

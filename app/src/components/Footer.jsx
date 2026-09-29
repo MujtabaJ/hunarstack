@@ -3,7 +3,9 @@ import { useData } from "../context/DataContext";
 
 export default function Footer() {
   const { site } = useData();
-  const email = site?.contact?.email || "hello@hunarstack.com";
+  const email = site?.contact?.email || "gm@hunarstack.com";
+  const phone = site?.contact?.phone || "0300 3740708";
+  const wa = "https://wa.me/923003740708";
 
   return (
     <footer className="site-footer">
@@ -31,8 +33,10 @@ export default function Footer() {
             <ul>
               <li><Link to="/about">About</Link></li>
               <li><Link to="/contact">Contact</Link></li>
+              {site?.contact?.name ? <li>{site.contact.name}</li> : null}
               <li><a href={`mailto:${email}`}>{email}</a></li>
-              {site?.contact?.phone ? <li>{site.contact.phone}</li> : null}
+              <li><a href={wa}>{phone}</a></li>
+              {site?.contact?.address ? <li>{site.contact.address}</li> : null}
               {site?.contact?.hours ? <li>{site.contact.hours}</li> : null}
             </ul>
           </div>

@@ -1,8 +1,8 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { useEffect, useLayoutEffect } from "react";
-import Header from "./Header";
-import Footer from "./Footer";
-import AmbientField from "./AmbientField";
+import Header from "./market/Header";
+import Footer from "./market/Footer";
+import WhatsAppButton from "./market/WhatsAppButton";
 import { useReveal } from "../hooks/useReveal";
 
 export default function Layout() {
@@ -19,12 +19,12 @@ export default function Layout() {
 
   return (
     <>
-      <AmbientField />
-      <div className="site-layer">
+      <div className="site-layer hs-site">
         <a className="skip" href="#main">Skip to content</a>
         <Header />
         <Outlet />
         <Footer />
+        <WhatsAppButton />
       </div>
     </>
   );

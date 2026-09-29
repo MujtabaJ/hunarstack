@@ -28,7 +28,7 @@ export default function Login() {
 
   return (
     <>
-      <PageHero kicker="Welcome back" title="Log in to HunarStack" text="Students learn. Instructors review. Admins run the academy. This demo stores accounts in your browser." />
+      <PageHero kicker="Classroom" title="Log in to HunarStack" text="Students track lessons and projects. Instructors review work. Admins manage people, applications, courses, fees and messages." />
       <main id="main" className="auth-screen">
         <div className="wrap">
           <div className="auth-card">
