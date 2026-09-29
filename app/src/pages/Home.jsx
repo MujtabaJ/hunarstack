@@ -154,8 +154,10 @@ export default function Home() {
       </section>
 
       <section className="hs-section hs-plain" id="founder">
-        <div className="hs-wrap hs-split">
-          <img src={IMAGES.founder} alt="Ghulam Mujtaba" width="800" height="1000" loading="lazy" />
+        <div className="hs-wrap hs-split hs-split-match">
+          <div className="hs-split-photo">
+            <img src={IMAGES.realProjects} alt="Ghulam Mujtaba" width="800" height="1200" loading="lazy" />
+          </div>
           <div>
             <p className="hs-kicker">Who is teaching</p>
             <h2>Learn from someone who has worked with international clients.</h2>

@@ -229,6 +229,16 @@
 
 .hs-split { display: grid; grid-template-columns: .9fr 1.1fr; gap: 28px; align-items: center; }
 .hs-split img { width: 100%; border-radius: 24px; height: 360px; object-fit: cover; box-shadow: var(--hs-shadow); }
+.hs-split-match { align-items: stretch; }
+.hs-split-photo { position: relative; min-height: 100%; }
+.hs-split-match .hs-split-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
 .hs-note {
   display: inline-block; margin-bottom: 8px; background: #fffbeb; color: #92400e;
   border-radius: 999px; padding: 4px 10px; font: 800 12px/1.4 Manrope, sans-serif;
@@ -378,6 +388,7 @@
   .hs-tools .hs-login,
   .hs-tools .hs-logout { display: none; }
   .hs-hero-grid, .hs-bridge, .hs-split, .hs-price-grid, .hs-everyone, .hs-visit, .hs-foot-grid { grid-template-columns: 1fr; }
+  .hs-split-photo { height: 360px; min-height: 360px; }
   .hs-grid-3, .hs-paths { grid-template-columns: 1fr 1fr; }
   .hs-trust { grid-template-columns: 1fr 1fr; }
   .hs-plans { grid-template-columns: 1fr; }
