@@ -20,7 +20,6 @@ export default function Layout() {
   return (
     <>
       <div className="site-layer hs-site">
-        <a className="skip" href="#main">Skip to content</a>
         <Header />
         <Outlet />
         <Footer />
