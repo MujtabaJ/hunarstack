@@ -57,6 +57,8 @@ export default function Header() {
           ) : (
             <Link className="hs-btn hs-btn-primary hs-mobile-cta" to="/enrol">Enroll Now</Link>
           )}
+          <a className="hs-menu-extra" href={SITE.whatsapp}>WhatsApp</a>
+          <button className="hs-btn hs-btn-ghost hs-menu-extra" type="button" onClick={() => { setOpen(false); document.body.classList.remove("nav-open"); setSearch(true); }}>Search courses</button>
         </nav>
         <div className="hs-tools">
           <button className="hs-icon" type="button" aria-label="Search courses" onClick={() => setSearch(true)}>
