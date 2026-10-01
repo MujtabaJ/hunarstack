@@ -7,7 +7,7 @@ import { FEATURED, CATEGORIES } from "../data/courses";
 import { TESTIMONIALS } from "../data/testimonials";
 import { IMAGES } from "../data/marketing/images";
 import {
-  AI_TOOLS, AI_USES, DIFFERENCE, EARN_CARDS, FAQS, FOUNDER, PATHS, PLATFORMS,
+  AI_TOOLS, AI_USES, DIFFERENCE, EARN_CARDS, FAQS, FOUNDER, JOURNEY_SCENES, PATHS, PLATFORMS,
   PROOF_STATS, PROPOSAL_FLOW, PRO_PLAN, SCHOOL_PLANS, SITE, TRUST, waLink,
 } from "../data/site";
 
@@ -189,16 +189,12 @@ export default function Home() {
             {PROPOSAL_FLOW.map((step) => <li key={step}><i>↓</i>{step}</li>)}
           </ol>
           <div className="hs-grid-2" style={{ marginTop: 18 }}>
-            {[
-              [IMAGES.journey, "Freelancing journey", "Illustrative Journey"],
-              [IMAGES.proposals, "Proposals to payments", "Illustrative Journey"],
-              [IMAGES.realProjects, "Projects and platforms", "Illustrative Journey"],
-              [IMAGES.struggles, "The long path", "Illustrative Journey"],
-            ].map(([src, alt, label]) => (
-              <figure className="hs-card" key={alt} style={{ padding: 10 }}>
-                <img src={src} alt={alt} loading="lazy" style={{ borderRadius: 16, width: "100%", height: 220, objectFit: "cover" }} />
-                <figcaption className="hs-note" style={{ margin: "10px 8px 6px" }}>{label}</figcaption>
-                <p style={{ padding: "0 8px 8px" }}>Promotional illustration. Not an official Upwork, Freelancer or Payoneer screenshot.</p>
+            {JOURNEY_SCENES.map((scene) => (
+              <figure className="hs-card" key={scene.id} style={{ padding: 10 }}>
+                <img src={IMAGES[scene.image]} alt={scene.alt} loading="lazy" style={{ borderRadius: 16, width: "100%", height: 220, objectFit: "cover" }} />
+                <figcaption className="hs-note" style={{ margin: "10px 8px 6px" }}>Illustrative Journey</figcaption>
+                <h3 style={{ margin: "0 8px 6px" }}>{scene.title}</h3>
+                <p style={{ padding: "0 8px 8px" }}>{scene.text}</p>
               </figure>
             ))}
           </div>

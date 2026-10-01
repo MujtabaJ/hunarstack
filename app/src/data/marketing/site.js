@@ -77,6 +77,37 @@ export const PATHS = [
   { id: "remote", title: "Remote work skills", text: "Learn how distributed teams communicate, deliver and stay reliable.", href: "/courses/remote-work" },
 ];
 
+export const JOURNEY_SCENES = [
+  {
+    id: "journey",
+    image: "journey",
+    title: "From a small city to global clients",
+    alt: "Ghulam Mujtaba at his desk, tracing a path from Sindh to clients around the world",
+    text: "The same city, a new skill, and a wider map. This scene follows the path from Sindh to international clients: learn, build, freelance, earn, and help others.",
+  },
+  {
+    id: "proposals",
+    image: "proposals",
+    title: "From proposals to payments",
+    alt: "An illustrated desk showing proposals, client interviews, hired projects, and payments",
+    text: "Apply, get a response, talk to the client, deliver the project, and receive payment. Students practise this sequence. A reply, a hire, and a payment are never guaranteed.",
+  },
+  {
+    id: "projects",
+    image: "realProjects",
+    title: "Real projects, real platforms",
+    alt: "A working desk with app projects, client briefs, and freelance platform profiles",
+    text: "Finished apps and clear briefs become the proof behind a freelance offer. The profiles and payment cards here illustrate that workflow. They are not official platform screenshots.",
+  },
+  {
+    id: "struggles",
+    image: "struggles",
+    title: "From daily practice to delivered work",
+    alt: "A daily plan beside skills, client work, and payments received over time",
+    text: "Start with small skills, practise every day, talk to clients, and deliver what was promised. Discipline and consistency are the story — not a shortcut to income.",
+  },
+];
+
 export const JOURNEY = [
   { n: "01", title: "Learning Skills", text: "Pick one useful skill and practise it until you can explain it in plain language." },
   { n: "02", title: "Building Real Projects", text: "Turn lessons into something you can open, click and show." },

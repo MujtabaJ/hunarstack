@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Seo from "../components/market/Seo";
 import { IMAGES } from "../data/marketing/images";
-import { FOUNDER, JOURNEY, PLATFORMS, PROPOSAL_FLOW, SITE } from "../data/site";
+import { FOUNDER, JOURNEY, JOURNEY_SCENES, PLATFORMS, PROPOSAL_FLOW, SITE } from "../data/site";
 
 export default function Journey() {
   return (
@@ -49,17 +49,13 @@ export default function Journey() {
           <section>
             <p className="hs-note">Illustrative Journey</p>
             <h2>Pictures of the story</h2>
-            <p>These are promotional illustrations. They are not official Upwork, Freelancer or Payoneer screenshots. Verified proof of the founder’s record is the list above. Genuine screenshots can replace these images later.</p>
+            <p>Each picture walks through one part of Ghulam Mujtaba’s path. The founder’s verified record is the list above. The platform screens in these pictures are illustrated, not official Upwork, Freelancer, or Payoneer screenshots.</p>
             <div className="hs-grid-2">
-              {[
-                [IMAGES.journey, "Learning and the long journey"],
-                [IMAGES.realProjects, "Real projects"],
-                [IMAGES.proposals, "Proposals and payments, illustrated"],
-                [IMAGES.struggles, "From struggle to skill"],
-              ].map(([src, alt]) => (
-                <figure className="hs-card" key={alt} style={{ padding: 10 }}>
-                  <img src={src} alt={alt} loading="lazy" style={{ width: "100%", borderRadius: 16, maxHeight: 280, objectFit: "cover" }} />
-                  <figcaption style={{ padding: 8 }}>{alt} · Illustrative Journey</figcaption>
+              {JOURNEY_SCENES.map((scene) => (
+                <figure className="hs-card" key={scene.id} style={{ padding: 10 }}>
+                  <img src={IMAGES[scene.image]} alt={scene.alt} loading="lazy" style={{ width: "100%", borderRadius: 16, maxHeight: 280, objectFit: "cover" }} />
+                  <figcaption style={{ padding: 8 }}><b>{scene.title}</b> · Illustrative Journey</figcaption>
+                  <p style={{ padding: "0 8px 8px" }}>{scene.text}</p>
                 </figure>
               ))}
             </div>
