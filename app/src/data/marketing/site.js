@@ -112,6 +112,7 @@ export const PLATFORMS = [
     who: "People with a skill and at least one project they can show.",
     skills: "Development, design, writing, AI workflows and other digital services.",
     prepare: "A clear profile, a portfolio piece and practice proposals. A profile does not guarantee invites or income.",
+    href: "/courses/upwork-freelancing",
   },
   {
     id: "fiverr",
@@ -120,6 +121,7 @@ export const PLATFORMS = [
     who: "Beginners who can describe one specific service clearly.",
     skills: "Design, video, writing, simple websites and AI-assisted services.",
     prepare: "One offer, sample work and honest delivery times. Orders are not guaranteed.",
+    href: "/courses/fiverr-freelancing",
   },
   {
     id: "freelancer",
@@ -128,6 +130,7 @@ export const PLATFORMS = [
     who: "Students learning how contests and project bids are structured.",
     skills: "Web, mobile, design and writing services.",
     prepare: "Learn to read a brief before you bid. Bidding is practice, not a promise of a win.",
+    href: "/courses/freelancer-com",
   },
   {
     id: "linkedin",
@@ -136,6 +139,7 @@ export const PLATFORMS = [
     who: "Students, freelancers and professionals who want to be findable.",
     skills: "Any skill you can explain with projects and a clear headline.",
     prepare: "A profile, a few posts about real work and polite outreach. Visibility is not the same as paid work.",
+    href: "/courses/linkedin-freelancing",
   },
   {
     id: "peopleperhour",
@@ -144,6 +148,7 @@ export const PLATFORMS = [
     who: "Freelancers who want a second place to present an offer.",
     skills: "Design, development, marketing and business support.",
     prepare: "Reuse a strong portfolio and a service description. Extra profiles do not create income by themselves.",
+    href: "/courses?category=freelancing",
   },
   {
     id: "contra",
@@ -152,6 +157,7 @@ export const PLATFORMS = [
     who: "Designers, developers and marketers building a public body of work.",
     skills: "Product design, development and marketing projects.",
     prepare: "A portfolio that shows process, not only final pictures.",
+    href: "/courses?category=design",
   },
   {
     id: "guru",
@@ -160,6 +166,7 @@ export const PLATFORMS = [
     who: "People comparing how different platforms handle quotes and agreements.",
     skills: "Technical and creative services you can scope.",
     prepare: "Practise writing a quote with scope, timeline and what is not included.",
+    href: "/courses?category=freelancing",
   },
 ];
 

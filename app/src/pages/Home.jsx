@@ -4,6 +4,7 @@ import AcademyMap from "../components/market/AcademyMap";
 import CourseCard from "../components/market/CourseCard";
 import FaqList from "../components/market/FaqList";
 import { FEATURED, CATEGORIES } from "../data/courses";
+import { TESTIMONIALS } from "../data/testimonials";
 import { IMAGES } from "../data/marketing/images";
 import {
   AI_TOOLS, AI_USES, DIFFERENCE, EARN_CARDS, FAQS, FOUNDER, PATHS, PLATFORMS,
@@ -208,11 +209,14 @@ export default function Home() {
             </div>
           </div>
           <div className="hs-grid-3">
-            {PLATFORMS.slice(0, 3).map((p) => (
+            {PLATFORMS.map((p) => (
               <article className="hs-card" key={p.id}>
                 <h3>{p.name}</h3>
-                <p>{p.what}</p>
-                <Link to="/courses">How students can prepare →</Link>
+                <p><b>What it is.</b> {p.what}</p>
+                <p><b>Who it is for.</b> {p.who}</p>
+                <p><b>Skills.</b> {p.skills}</p>
+                <p><b>How to prepare.</b> {p.prepare}</p>
+                <Link to={p.href}>How students can prepare →</Link>
               </article>
             ))}
           </div>
@@ -266,10 +270,13 @@ export default function Home() {
             <Link className="hs-btn hs-btn-ghost" to="/stories">Submit Your Story</Link>
           </div>
           <div className="hs-grid-3">
-            {[1, 2, 3].map((n) => (
-              <article className="hs-card hs-quote" key={n}>
-                <blockquote>“Student testimonial will appear here.”</blockquote>
-                <p className="hs-ph">Name · City · Course · Before · After · Project</p>
+            {TESTIMONIALS.map((story) => (
+              <article className="hs-card hs-quote" key={story.id}>
+                <blockquote>“{story.quote}”</blockquote>
+                <p className="hs-ph">{story.name} · {story.city} · {story.course}</p>
+                <p><b>Before:</b> {story.before}</p>
+                <p><b>After:</b> {story.after}</p>
+                <p><b>Project:</b> {story.project}</p>
               </article>
             ))}
           </div>

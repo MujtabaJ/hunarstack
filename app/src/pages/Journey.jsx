@@ -82,6 +82,7 @@ export default function Journey() {
                   <p><b>Who it helps.</b> {p.who}</p>
                   <p><b>Skills.</b> {p.skills}</p>
                   <p><b>How to prepare.</b> {p.prepare}</p>
+                  <Link to={p.href}>How students can prepare →</Link>
                 </article>
               ))}
             </div>

@@ -1,6 +1,58 @@
 import { getCourses, defaultFeeFor } from "../data/catalog";
+import { getCourse as marketingCourse } from "../data/courses";
 import { DEFAULT_SITE, collectPhotos } from "../data/siteDefault";
 import { matchCourse } from "./media";
+
+const CLASSROOM_BY_SLUG = {
+  "ios-development": "mobile",
+  "android-development": "mobile",
+  "flutter-development": "mobile",
+  "react-native": "mobile",
+  "app-development-for-earning": "mobile",
+  "web-development": "web",
+  "backend-apis": "cloud",
+  "database-firebase": "cloud",
+  "freelancing-mastery": "freelance",
+  "upwork-freelancing": "upwork",
+  "fiverr-freelancing": "fiverr",
+  "freelancer-com": "freelancer",
+  "linkedin-freelancing": "linkedin",
+  "proposal-writing": "freelance",
+  "client-communication": "freelance",
+  "portfolio-building": "projects",
+  "remote-work": "remote",
+  "online-business": "freelance",
+  "youtube-earning": "youtube",
+  "facebook-earning": "facebook",
+  "tiktok-growth": "tiktok",
+  "video-editing": "youtube",
+  "graphic-design": "uiux",
+  "figma": "uiux",
+  "ui-ux-design": "uiux",
+  "canva": "uiux",
+  "adobe-photoshop": "uiux",
+  "adobe-illustrator": "uiux",
+  "social-media-design": "uiux",
+  "youtube-thumbnail-design": "uiux",
+};
+
+const CLASSROOM_BY_CATEGORY = {
+  programming: "software",
+  freelancing: "freelance",
+  ai: "ai",
+  creator: "youtube",
+  digital: "freelance",
+  design: "uiux",
+  stock: "uiux",
+};
+
+function classroomCourseId(state, id) {
+  const direct = findCourse(state, id);
+  if (direct) return direct.id;
+  const listed = marketingCourse(id);
+  const mapped = (listed && (CLASSROOM_BY_SLUG[listed.slug] || CLASSROOM_BY_CATEGORY[listed.category])) || "";
+  return findCourse(state, mapped)?.id || "";
+}
 
 const KEY = "hunarstack_product_v1";
 
@@ -246,8 +298,9 @@ export function addApplication(payload) {
   const user = payload.userId
     ? state.users.find((u) => u.id === payload.userId)
     : findUserByEmail(state, payload.email);
-  const courseId = course?.id || payload.courseId || "";
-  const track = course?.name || payload.track || "";
+  const listed = marketingCourse(payload.courseId || payload.track || "");
+  const courseId = course?.id || classroomCourseId(state, payload.courseId || payload.track) || "";
+  const track = payload.track || listed?.title || course?.name || "";
   const email = payload.email;
 
   const existing = state.applications.find(
@@ -306,7 +359,7 @@ export function setApplicationStatus(id, status, courseId, note) {
   app.status = status;
   app.decidedAt = new Date().toISOString();
   if (note != null) app.note = note;
-  const resolvedCourseId = courseId || app.courseId || findCourse(state, app.track)?.id || "";
+  const resolvedCourseId = courseId || classroomCourseId(state, app.courseId) || findCourse(state, app.track)?.id || "";
   app.courseId = resolvedCourseId;
   const user = findUserByEmail(state, app.email) || state.users.find((u) => u.id === app.userId);
 
