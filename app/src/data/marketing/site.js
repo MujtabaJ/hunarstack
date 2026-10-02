@@ -109,18 +109,18 @@ export const JOURNEY_SCENES = [
 ];
 
 export const JOURNEY = [
-  { n: "01", title: "Learning Skills", text: "Pick one useful skill and practise it until you can explain it in plain language." },
-  { n: "02", title: "Building Real Projects", text: "Turn lessons into something you can open, click and show." },
-  { n: "03", title: "Creating Profiles", text: "Write a profile that says what you do, who it helps and what you have built." },
-  { n: "04", title: "Writing Proposals", text: "Answer a real brief with a clear plan, questions and a realistic scope." },
-  { n: "05", title: "Getting Responses", text: "Learn why some messages get replies and others are ignored. Replies are never guaranteed." },
-  { n: "06", title: "Talking to Clients", text: "Practise discovery calls: listen, confirm the problem and explain how you would work." },
-  { n: "07", title: "Winning Projects", text: "Understand offers, scope and next steps. Winning work depends on skill, timing and the client." },
-  { n: "08", title: "Delivering Successfully", text: "Ship the work, ask for feedback and fix what you promised to fix." },
-  { n: "09", title: "Receiving Payments", text: "Learn how freelance platforms and payment services are used. This is education, not proof of a payout." },
-  { n: "10", title: "Building Long-Term Relationships", text: "Repeat clients come from clear communication and work that matches the brief." },
-  { n: "11", title: "Working With International Clients", text: "See how time zones, English updates and professional delivery fit together." },
-  { n: "12", title: "Helping Others Learn", text: "HunarStack exists so more people in Jamshoro can walk this path with guidance." },
+  { n: "01", title: "Learning Skills", text: "Computer Science at the University of Sindh, then more than ten years of professional software work. The skill came before the marketplace. Students start the same way: one useful skill, practised until they can explain it in plain language." },
+  { n: "02", title: "Building Real Projects", text: "iOS, Android, Flutter and React Native apps, with Firebase, APIs, AWS, App Store, Google Play and in-app purchases. More than 70 apps were delivered. A project you can open is the proof a profile needs." },
+  { n: "03", title: "Creating Profiles", text: "A profile names the work and the person it helps. His says mobile apps and the tools behind them. Students write the same kind of page from projects they have actually finished. A profile is not an invitation." },
+  { n: "04", title: "Writing Proposals", text: "Each proposal answers one brief: the problem, a plan, a few questions and a realistic scope. A message that ignores the job is easy to skip. Students practise on real-style briefs." },
+  { n: "05", title: "Getting Responses", text: "Some messages are opened. Many are not. Learning the difference is part of the work. A reply is never owed, and this page will not pretend otherwise." },
+  { n: "06", title: "Talking to Clients", text: "A discovery call is for listening. Confirm the problem, explain how you would work, and agree what “done” means before any build starts." },
+  { n: "07", title: "Winning Projects", text: "Seventeen Upwork jobs is his record, not a student target. Winning work depends on the skill, the brief, the timing and the client." },
+  { n: "08", title: "Delivering Successfully", text: "781 Upwork hours and 100% Job Success come from shipping what was promised and fixing what was agreed. Hours are a record of delivery, not a shortcut." },
+  { n: "09", title: "Receiving Payments", text: "Freelance platforms and payment services are how completed work is paid. Students learn that process. This page does not show a payout, and it does not promise one." },
+  { n: "10", title: "Building Long-Term Relationships", text: "Repeat work follows clear updates and delivery that matches the brief. Top Rated describes his Upwork account. It is not a badge the academy can hand to a student." },
+  { n: "11", title: "Working With International Clients", text: "Time zones, written English updates and professional delivery. His clients were international. A student’s clients will depend on their skill and on who needs that skill." },
+  { n: "12", title: "Helping Others Learn", text: "HunarStack in Jamshoro exists so more people can walk this path with guidance: learn a skill, build something real, and understand how platforms work. Income is not part of the promise." },
 ];
 
 export const PROPOSAL_FLOW = [
@@ -274,6 +274,17 @@ export const PROOF_STATS = [
   ["100%", "Job Success"],
   ["$20K+", "Freelancing Earnings"],
   ["70+", "Apps Delivered"],
+];
+
+export const FOUNDER_PROOF = [
+  ["Top Rated", "on Upwork"],
+  ["100%", "Job Success"],
+  ["$20K+", "His own earnings"],
+  ["70+", "Apps delivered"],
+  ["10+ years", "Professional work"],
+  ["17", "Upwork jobs"],
+  ["781", "Upwork hours"],
+  ["Global", "Client experience"],
 ];
 
 export function waLink(text) {

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Seo from "../components/market/Seo";
 import { IMAGES } from "../data/marketing/images";
-import { FOUNDER, JOURNEY, JOURNEY_SCENES, PLATFORMS, PROPOSAL_FLOW, SITE } from "../data/site";
+import { FOUNDER, FOUNDER_PROOF, JOURNEY, JOURNEY_SCENES, PLATFORMS, PROPOSAL_FLOW, SITE } from "../data/site";
 
 export default function Journey() {
   return (
@@ -16,19 +16,32 @@ export default function Journey() {
           <p className="hs-crumbs"><Link to="/">Home</Link> <span>/</span> <span>Freelancing Journey</span></p>
           <p className="hs-kicker">My Freelancing Journey</p>
           <h1>From a Small City to Global Opportunities</h1>
-          <p className="hs-lead">This is Ghulam Mujtaba’s path: learn a skill, build projects, create a profile, talk to clients and deliver. It is a map for students. It is not a promise that the same numbers will happen for you.</p>
+          <p className="hs-lead">HunarStack was built from real software and freelancing work. This page shows the process: learn a skill, build projects, understand platforms, and look for opportunities. The numbers are his. They are not a promise for you.</p>
         </div>
       </header>
       <main id="main" className="hs-page">
         <div className="hs-wrap" style={{ display: "grid", gap: 28 }}>
-          <section className="hs-split">
-            <img src={IMAGES.founder} alt="Ghulam Mujtaba" width="800" height="1000" />
-            <div>
+          <section className="hs-founder">
+            <figure className="hs-founder-photo">
+              <img src={IMAGES.founderStanding} alt="Ghulam Mujtaba, founder of HunarStack" width="800" height="1400" />
+            </figure>
+            <div className="hs-founder-copy">
+              <p className="hs-kicker">See the process</p>
               <h2>{FOUNDER.name}</h2>
-              <p>Software engineer. Computer Science background. University of Sindh. More than ten years of professional software development. Top Rated on Upwork with 100% Job Success, $20K+ in freelancing earnings, 17 Upwork jobs, 781 hours and 70+ apps delivered for international clients.</p>
-              <p>Learn from someone who has actually worked with international clients. See the process behind real freelancing.</p>
+              <p>Learn from someone who has actually worked with international clients. He is a {FOUNDER.role.toLowerCase()}, with a Computer Science background from the University of Sindh and more than ten years of professional software development.</p>
+              <p>Skills become projects. Projects become a portfolio. A portfolio creates a chance to talk to a client. That is the path below. It is a map, not a guarantee that the same numbers will follow.</p>
               <div className="hs-chips">{FOUNDER.skills.map((s) => <span className="hs-chip" key={s}>{s}</span>)}</div>
+              <div className="hs-actions" style={{ marginTop: 16 }}>
+                <Link className="hs-btn hs-btn-primary" to="/enrol">Enroll Now →</Link>
+                <Link className="hs-btn hs-btn-ghost" to="/courses?category=freelancing">Freelancing courses</Link>
+              </div>
             </div>
+          </section>
+
+          <section className="hs-proof" aria-label="Ghulam Mujtaba’s verified record">
+            {FOUNDER_PROOF.map(([value, label]) => (
+              <div key={label}><b>{value}</b><span>{label}</span></div>
+            ))}
           </section>
 
           <section>
@@ -63,7 +76,7 @@ export default function Journey() {
 
           <section>
             <h2>From proposal to payment</h2>
-            <ol className="hs-flow">
+            <ol className="hs-flow hs-flow-wide">
               {PROPOSAL_FLOW.map((step, i) => <li key={step}><i>{String(i + 1).padStart(2, "0")}</i>{step}</li>)}
             </ol>
           </section>

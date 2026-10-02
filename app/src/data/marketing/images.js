@@ -1,5 +1,7 @@
 import logo from "../../assets/logo/HunarStack_Logo.svg";
-import founder from "../../assets/web/upwork_profile_photo.jpg";
+import founder from "../../assets/web/founder_sitting.png";
+import founderStanding from "../../assets/founder/founder_standing.png";
+import founderStanding2 from "../../assets/web/founder_standing2.png";
 import journey from "../../assets/web/freelancing-journey.jpg";
 import realProjects from "../../assets/web/real-projects-real-earnings.jpg";
 import proposals from "../../assets/web/proposals-to-payments.jpg";
@@ -17,6 +19,8 @@ import freelance from "../../assets/web/freelancing-mastery.jpg";
 export const IMAGES = {
   logo,
   founder,
+  founderStanding,
+  founderStanding2,
   journey,
   realProjects,
   proposals,
