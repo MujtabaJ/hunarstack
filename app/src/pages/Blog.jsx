@@ -1,6 +1,7 @@
 import { Link, useSearchParams } from "react-router-dom";
 import Seo from "../components/market/Seo";
 import { BLOG_CATEGORIES, postsIn } from "../data/blog";
+import { imageForPost } from "../data/marketing/images";
 
 export default function Blog() {
   const [params, setParams] = useSearchParams();
@@ -28,6 +29,7 @@ export default function Blog() {
           <div className="hs-grid-3">
             {posts.map((post) => (
               <article className="hs-card" key={post.slug}>
+                <img className="hs-thumb" src={imageForPost(post.slug)} alt="" width="1200" height="675" loading="lazy" />
                 <p className="hs-kicker">{post.category}</p>
                 <h2 style={{ fontSize: "1.3rem", maxWidth: "none" }}><Link to={`/blog/${post.slug}`}>{post.title}</Link></h2>
                 <p>{post.excerpt}</p>

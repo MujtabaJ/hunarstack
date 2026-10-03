@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 export default function CourseCard({ course }) {
   return (
     <article className="hs-card hs-course">
-      <img src={course.image} alt="" width="640" height="360" loading="lazy" />
-      <p className="hs-note">Illustration</p>
+      <img src={course.image} alt="" width="1200" height="675" loading="lazy" />
       <div>
         <h3>{course.title}</h3>
         <p>{course.subtitle}</p>

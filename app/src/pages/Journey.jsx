@@ -1,7 +1,32 @@
 import { Link } from "react-router-dom";
 import Seo from "../components/market/Seo";
-import { IMAGES } from "../data/marketing/images";
+import { IMAGES, poster } from "../data/marketing/images";
 import { FOUNDER, FOUNDER_PROOF, JOURNEY, JOURNEY_SCENES, PLATFORMS, PROPOSAL_FLOW, SITE } from "../data/site";
+
+const STEP_POSTER = {
+  "Learning Skills": "web-development",
+  "Building Real Projects": "flutter-development",
+  "Creating Profiles": "upwork-freelancing",
+  "Writing Proposals": "proposal-writing",
+  "Getting Responses": "client-communication",
+  "Talking to Clients": "freelancing-mastery",
+  "Winning Projects": "freelancer-com",
+  "Delivering Successfully": "app-development-for-earning",
+  "Receiving Payments": "digital-products",
+  "Building Long-Term Relationships": "linkedin-freelancing",
+  "Working With International Clients": "remote-work",
+  "Helping Others Learn": "content-creation",
+};
+
+const PLATFORM_POSTER = {
+  upwork: "upwork-freelancing",
+  fiverr: "fiverr-freelancing",
+  freelancer: "freelancer-com",
+  linkedin: "linkedin-freelancing",
+  peopleperhour: "freelancing-mastery",
+  contra: "ui-ux-design",
+  guru: "proposal-writing",
+};
 
 export default function Journey() {
   return (
@@ -51,6 +76,7 @@ export default function Journey() {
                 <li key={step.n}>
                   <b>{step.n}</b>
                   <article className="hs-card">
+                    <img className="hs-thumb" src={poster(STEP_POSTER[step.title])} alt="" width="640" height="360" loading="lazy" />
                     <h3>{step.title}</h3>
                     <p>{step.text}</p>
                   </article>
@@ -66,7 +92,7 @@ export default function Journey() {
             <div className="hs-grid-2">
               {JOURNEY_SCENES.map((scene) => (
                 <figure className="hs-card" key={scene.id} style={{ padding: 10 }}>
-                  <img src={IMAGES[scene.image]} alt={scene.alt} loading="lazy" style={{ width: "100%", borderRadius: 16, maxHeight: 280, objectFit: "cover" }} />
+                  <img src={IMAGES[scene.image]} alt={scene.alt} loading="lazy" style={{ width: "100%", height: "auto", borderRadius: 16, display: "block" }} />
                   <figcaption style={{ padding: 8 }}><b>{scene.title}</b> · Illustrative Journey</figcaption>
                   <p style={{ padding: "0 8px 8px" }}>{scene.text}</p>
                 </figure>
@@ -86,6 +112,7 @@ export default function Journey() {
             <div className="hs-grid-3">
               {PLATFORMS.map((p) => (
                 <article className="hs-card" key={p.id}>
+                  <img className="hs-thumb" src={poster(PLATFORM_POSTER[p.id])} alt="" width="640" height="360" loading="lazy" />
                   <h3>{p.name}</h3>
                   <p><b>What it is.</b> {p.what}</p>
                   <p><b>Who it helps.</b> {p.who}</p>

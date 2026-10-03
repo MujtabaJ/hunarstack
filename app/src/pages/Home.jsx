@@ -5,11 +5,65 @@ import CourseCard from "../components/market/CourseCard";
 import FaqList from "../components/market/FaqList";
 import { FEATURED, CATEGORIES } from "../data/courses";
 import { TESTIMONIALS } from "../data/testimonials";
-import { IMAGES } from "../data/marketing/images";
+import { IMAGES, poster } from "../data/marketing/images";
 import {
   AI_TOOLS, AI_USES, DIFFERENCE, EARN_CARDS, FAQS, FOUNDER, JOURNEY_SCENES, PATHS, PLATFORMS,
   PROOF_STATS, PROPOSAL_FLOW, PRO_PLAN, SCHOOL_PLANS, SITE, TRUST, waLink,
 } from "../data/site";
+
+const PATH_POSTER = {
+  primary: "canva",
+  matric: "graphic-design",
+  college: "web-development",
+  university: "flutter-development",
+  beginners: "freelancing-mastery",
+  freelancers: "proposal-writing",
+  professionals: "ai-tools-mastery",
+  developers: "react-native",
+  creators: "youtube-earning",
+  women: "content-creation",
+  business: "shopify",
+  ai: "chatgpt",
+  remote: "remote-work",
+};
+
+const PLATFORM_POSTER = {
+  upwork: "upwork-freelancing",
+  fiverr: "fiverr-freelancing",
+  freelancer: "freelancer-com",
+  linkedin: "linkedin-freelancing",
+  peopleperhour: "freelancing-mastery",
+  contra: "ui-ux-design",
+  guru: "proposal-writing",
+};
+
+const AI_POSTER = {
+  "AI for content": "ai-content-creation",
+  "AI for freelancing": "ai-for-freelancers",
+  "AI for design": "ai-image-generation",
+  "AI for research": "chatgpt",
+  "AI for coding": "web-development",
+  "AI automation": "ai-automation",
+  "AI business workflows": "ai-for-business",
+};
+
+const DIFFERENCE_POSTER = {
+  "Practical Learning": "web-development",
+  "Real Projects": "portfolio-building",
+  "Freelancing Guidance": "proposal-writing",
+  "AI Skills": "ai-tools-mastery",
+  "Career Guidance": "remote-work",
+  "Lifetime Support": "client-communication",
+};
+
+const EARN_POSTER = {
+  "Learn a Skill": "web-development",
+  "Build a Portfolio": "portfolio-building",
+  "Find Opportunities": "upwork-freelancing",
+  "Work With Clients": "client-communication",
+  "Grow Your Experience": "freelancing-mastery",
+  "Build Your Career": "remote-work",
+};
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -104,6 +158,7 @@ export default function Home() {
           <div className="hs-grid-3">
             {DIFFERENCE.map((item, i) => (
               <article className="hs-card" key={item.title}>
+                <img className="hs-thumb" src={poster(DIFFERENCE_POSTER[item.title])} alt="" width="640" height="360" loading="lazy" />
                 <div className="hs-num">{String(i + 1).padStart(2, "0")}</div>
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
@@ -146,6 +201,7 @@ export default function Home() {
           <div className="hs-paths">
             {PATHS.map((path) => (
               <Link className="hs-card" key={path.id} to={path.href}>
+                <img className="hs-thumb" src={poster(PATH_POSTER[path.id])} alt="" width="640" height="360" loading="lazy" />
                 <h3>{path.title}</h3>
                 <p>{path.text}</p>
               </Link>
@@ -155,10 +211,8 @@ export default function Home() {
       </section>
 
       <section className="hs-section hs-plain" id="founder">
-        <div className="hs-wrap hs-split hs-split-match">
-          <div className="hs-split-photo">
-            <img src={IMAGES.realProjects} alt="Ghulam Mujtaba" width="800" height="1200" loading="lazy" />
-          </div>
+        <div className="hs-wrap hs-split">
+          <img className="hs-poster" src={IMAGES.realProjects} alt="Illustrated poster of Ghulam Mujtaba’s freelancing work" width="1400" height="1400" loading="lazy" />
           <div>
             <p className="hs-kicker">Who is teaching</p>
             <h2>Learn from someone who has worked with international clients.</h2>
@@ -191,7 +245,7 @@ export default function Home() {
           <div className="hs-grid-2" style={{ marginTop: 18 }}>
             {JOURNEY_SCENES.map((scene) => (
               <figure className="hs-card" key={scene.id} style={{ padding: 10 }}>
-                <img src={IMAGES[scene.image]} alt={scene.alt} loading="lazy" style={{ borderRadius: 16, width: "100%", height: 220, objectFit: "cover" }} />
+                <img src={IMAGES[scene.image]} alt={scene.alt} loading="lazy" style={{ borderRadius: 16, width: "100%", height: "auto", display: "block" }} />
                 <figcaption className="hs-note" style={{ margin: "10px 8px 6px" }}>Illustrative Journey</figcaption>
                 <h3 style={{ margin: "0 8px 6px" }}>{scene.title}</h3>
                 <p style={{ padding: "0 8px 8px" }}>{scene.text}</p>
@@ -207,7 +261,8 @@ export default function Home() {
           <div className="hs-grid-3">
             {PLATFORMS.map((p) => (
               <article className="hs-card" key={p.id}>
-                <h3>{p.name}</h3>
+                  <img className="hs-thumb" src={poster(PLATFORM_POSTER[p.id])} alt="" width="640" height="360" loading="lazy" />
+                  <h3>{p.name}</h3>
                 <p><b>What it is.</b> {p.what}</p>
                 <p><b>Who it is for.</b> {p.who}</p>
                 <p><b>Skills.</b> {p.skills}</p>
@@ -249,7 +304,11 @@ export default function Home() {
           </div>
           <div className="hs-grid-3">
             {AI_USES.map((item) => (
-              <article className="hs-card" key={item.title}><h3>{item.title}</h3><p>{item.text}</p></article>
+              <article className="hs-card" key={item.title}>
+                <img className="hs-thumb" src={poster(AI_POSTER[item.title])} alt="" width="640" height="360" loading="lazy" />
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
             ))}
           </div>
         </div>
@@ -290,7 +349,11 @@ export default function Home() {
           </div>
           <div className="hs-grid-3">
             {EARN_CARDS.map((card) => (
-              <article className="hs-card" key={card.title}><h3>{card.title}</h3><p>{card.text}</p></article>
+              <article className="hs-card" key={card.title}>
+                <img className="hs-thumb" src={poster(EARN_POSTER[card.title])} alt="" width="640" height="360" loading="lazy" />
+                <h3>{card.title}</h3>
+                <p>{card.text}</p>
+              </article>
             ))}
           </div>
         </div>

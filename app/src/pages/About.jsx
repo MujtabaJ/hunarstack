@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Seo from "../components/market/Seo";
-import { IMAGES } from "../data/marketing/images";
+import { IMAGES, poster } from "../data/marketing/images";
 import { FOUNDER, FOUNDER_PROOF, SITE, waLink } from "../data/site";
 
 export default function About() {
@@ -52,9 +52,9 @@ export default function About() {
               </div>
             </div>
             <div className="hs-grid-3">
-              <article className="hs-card"><h3>Learn</h3><p>Programming, AI, design and freelancing, taught through practice. Beginners start with one skill. People who already code go deeper.</p></article>
-              <article className="hs-card"><h3>Build</h3><p>Lessons turn into projects you can open and show: apps, sites, designs and a portfolio that matches the work.</p></article>
-              <article className="hs-card"><h3>Earn</h3><p>Profiles, proposals, client calls and platforms such as Upwork and Fiverr. Opportunity comes after the skill. Income is never guaranteed.</p></article>
+              <article className="hs-card"><img className="hs-thumb" src={poster("web-development")} alt="" width="640" height="360" loading="lazy" /><h3>Learn</h3><p>Programming, AI, design and freelancing, taught through practice. Beginners start with one skill. People who already code go deeper.</p></article>
+              <article className="hs-card"><img className="hs-thumb" src={poster("portfolio-building")} alt="" width="640" height="360" loading="lazy" /><h3>Build</h3><p>Lessons turn into projects you can open and show: apps, sites, designs and a portfolio that matches the work.</p></article>
+              <article className="hs-card"><img className="hs-thumb" src={poster("upwork-freelancing")} alt="" width="640" height="360" loading="lazy" /><h3>Earn</h3><p>Profiles, proposals, client calls and platforms such as Upwork and Fiverr. Opportunity comes after the skill. Income is never guaranteed.</p></article>
             </div>
           </section>
 
@@ -67,9 +67,9 @@ export default function About() {
               </div>
             </div>
             <div className="hs-grid-3">
-              <article className="hs-card"><h3>Beginners</h3><p>You can start without a technical background. Curiosity and steady practice are enough.</p></article>
-              <article className="hs-card"><h3>Already technical</h3><p>If you already code or design, use the time for portfolio projects, freelancing workflows and AI tools.</p></article>
-              <article className="hs-card"><h3>Jamshoro</h3><p>{SITE.address}. Visit the academy, or start the conversation on WhatsApp.</p></article>
+              <article className="hs-card"><img className="hs-thumb" src={poster("freelancing-mastery")} alt="" width="640" height="360" loading="lazy" /><h3>Beginners</h3><p>You can start without a technical background. Curiosity and steady practice are enough.</p></article>
+              <article className="hs-card"><img className="hs-thumb" src={poster("flutter-development")} alt="" width="640" height="360" loading="lazy" /><h3>Already technical</h3><p>If you already code or design, use the time for portfolio projects, freelancing workflows and AI tools.</p></article>
+              <article className="hs-card"><img className="hs-thumb" src={IMAGES.journey} alt="" width="640" height="360" loading="lazy" /><h3>Jamshoro</h3><p>{SITE.address}. Visit the academy, or start the conversation on WhatsApp.</p></article>
             </div>
           </section>
 

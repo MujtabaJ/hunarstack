@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Seo from "../components/market/Seo";
+import CourseCard from "../components/market/CourseCard";
 import FaqList from "../components/market/FaqList";
 import { CATEGORIES, relatedCourses } from "../data/courses";
 import { FOUNDER, SITE, waLink } from "../data/site";
@@ -134,12 +135,7 @@ export default function MarketingCourse({ course }) {
             <section>
               <h2>Related courses</h2>
               <div className="hs-grid-3">
-                {related.map((item) => (
-                  <Link className="hs-card" key={item.slug} to={`/courses/${item.slug}`}>
-                    <h3>{item.title}</h3>
-                    <p>{item.subtitle}</p>
-                  </Link>
-                ))}
+                {related.map((item) => <CourseCard key={item.slug} course={item} />)}
               </div>
             </section>
           )}

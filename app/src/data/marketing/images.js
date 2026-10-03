@@ -72,6 +72,34 @@ export const COURSE_IMAGE = {
   "prompt-engineering": chatgpt,
 };
 
+const coursePosters = import.meta.glob("../../assets/courses/posters/*.jpg", {
+  eager: true,
+  import: "default",
+  query: "?url",
+});
+
+const thumbBySlug = Object.fromEntries(
+  Object.entries(coursePosters).map(([file, url]) => [file.split("/").pop().replace(/\.jpg$/, ""), url]),
+);
+
 export function imageForCourse(course) {
-  return COURSE_IMAGE[course.slug] || CATEGORY_IMAGE[course.category] || freelance;
+  return thumbBySlug[course.slug] || COURSE_IMAGE[course.slug] || CATEGORY_IMAGE[course.category] || freelance;
+}
+
+export function poster(slug) {
+  return thumbBySlug[slug] || freelance;
+}
+
+const blogArt = import.meta.glob("../../assets/blog/*.jpg", {
+  eager: true,
+  import: "default",
+  query: "?url",
+});
+
+const blogBySlug = Object.fromEntries(
+  Object.entries(blogArt).map(([file, url]) => [file.split("/").pop().replace(/\.jpg$/, ""), url]),
+);
+
+export function imageForPost(slug) {
+  return blogBySlug[slug] || freelance;
 }
