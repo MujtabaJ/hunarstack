@@ -61,7 +61,7 @@ export default function AppShell() {
           <img src="/logo-mark.svg" width="32" height="32" alt="" />
           hunar<b>stack</b>
         </Link>
-        <div>
+        <div className="side-user">
           <strong>{user.name}</strong>
           <div className={`role-pill ${user.role}`}>{user.role}</div>
         </div>

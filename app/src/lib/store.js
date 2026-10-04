@@ -61,19 +61,28 @@ const DEMO = {
     { id: "u_admin", name: "HunarStack Admin", email: "admin@hunarstack.com", password: "admin123", role: "admin", city: "Lahore, Pakistan", bio: "Academy operations." },
     { id: "u_instructor", name: "Amina Khan", email: "instructor@hunarstack.com", password: "teach123", role: "instructor", city: "Karachi, Pakistan", bio: "Teaches Web and UI/UX tracks." },
     { id: "u_student", name: "Sara Ali", email: "student@hunarstack.com", password: "student123", role: "student", city: "Islamabad, Pakistan", bio: "Learning AI and web development." },
+    { id: "u_student2", name: "Hira Memon", email: "hira@hunarstack.com", password: "student123", role: "student", city: "Jamshoro, Pakistan", bio: "Learning UI/UX and turning class exercises into portfolio pieces." },
   ],
   enrollments: [
     { id: "e1", userId: "u_student", courseId: "ai", status: "active", startedAt: "2026-08-10" },
     { id: "e2", userId: "u_student", courseId: "web", status: "active", startedAt: "2026-08-24" },
+    { id: "e3", userId: "u_student2", courseId: "uiux", status: "active", startedAt: "2026-09-01" },
   ],
   progress: {
     u_student: {
       ai: [1, 2, 3, 4],
       web: [1, 2],
     },
+    u_student2: {
+      uiux: [1, 2, 3],
+    },
   },
   submissions: [
-    { id: "s1", userId: "u_student", courseId: "ai", week: 4, title: "Model report with charts", note: "First pass of the evaluation report.", status: "review", studentName: "Sara Ali", createdAt: "2026-09-12" },
+    { id: "s1", userId: "u_student", courseId: "ai", week: 4, title: "Model report with charts", note: "Charts for the week 4 evaluation. I used the sample dataset and wrote what the numbers mean.", status: "review", studentName: "Sara Ali", createdAt: "2026-09-12", feedback: "" },
+    { id: "s2", userId: "u_student", courseId: "ai", week: 2, title: "Prompt worksheet", note: "Five prompts for the same brief, with what I changed each time.", status: "approved", studentName: "Sara Ali", createdAt: "2026-08-28", feedback: "The comparisons are clear. On the next one, mark which prompt you would actually send, and why." },
+    { id: "s3", userId: "u_student", courseId: "web", week: 2, title: "One-page profile site", note: "A page with my name, three skills and a contact form.", status: "needs work", studentName: "Sara Ali", createdAt: "2026-09-02", feedback: "The email field has no label, and the browser tab still says Document. Fix both, then resubmit." },
+    { id: "s4", userId: "u_student2", courseId: "uiux", week: 3, title: "Three-screen study app", note: "A clickable Figma flow: home, lesson and a short quiz. I wrote the spacing decisions under the frames.", status: "review", studentName: "Hira Memon", createdAt: "2026-09-18", feedback: "" },
+    { id: "s5", userId: "u_student2", courseId: "uiux", week: 1, title: "Type and colour study", note: "One poster using two type sizes and a palette I can explain.", status: "approved", studentName: "Hira Memon", createdAt: "2026-09-08", feedback: "Approved. The hierarchy is easy to read. Keep this as the first page of the case study." },
   ],
   applications: [
     { id: "a1", userId: "u_student", name: "Sara Ali", email: "student@hunarstack.com", phone: "+92 300 0000000", city: "Islamabad, Pakistan", track: "AI & Generative AI", courseId: "ai", level: "Complete beginner", goal: "Build an AI demo I can show.", source: "Friend", status: "accepted", createdAt: "2026-08-08", createdAtFull: "2026-08-08T09:00:00.000Z", note: "" },
@@ -87,13 +96,18 @@ const DEMO = {
     { id: "n1", userId: "u_student", text: "Welcome to HunarStack. Your AI track is live — start with Week 1.", read: false, createdAt: "2026-08-10" },
     { id: "n2", userId: "u_instructor", text: "Sara Ali submitted Week 4 of AI & Generative AI.", read: false, createdAt: "2026-09-12" },
     { id: "n3", userId: "u_admin", text: "New applications appear here when students apply for a seat.", read: true, createdAt: "2026-08-01" },
+    { id: "n4", userId: "u_instructor", text: "Hira Memon submitted a three-screen study app for UI/UX.", read: false, createdAt: "2026-09-18" },
+    { id: "n5", userId: "u_student2", text: "Your type study was approved. Week 3 is waiting for a review.", read: false, createdAt: "2026-09-18" },
+    { id: "n6", userId: "u_student", text: "Your profile page needs two fixes before it can be approved.", read: false, createdAt: "2026-09-02" },
   ],
   freelanceKit: {
-    u_student: { niche: true, profiles: false, proposals: false, pricing: false, delivery: false, plan: false },
+    u_student: { niche: true, profiles: true, proposals: false, pricing: false, delivery: false, plan: false },
+    u_student2: { niche: true, profiles: false, proposals: false, pricing: false, delivery: false, plan: false },
   },
   invoices: [
     { id: "inv1", userId: "u_student", courseId: "ai", amount: 45000, paid: 45000, currency: "PKR", status: "paid", createdAt: "2026-08-08", method: "bank", note: "Seat fee for AI & Generative AI" },
     { id: "inv2", userId: "u_student", courseId: "web", amount: 45000, paid: 15000, currency: "PKR", status: "partial", createdAt: "2026-08-24", method: "jazzcash", note: "Seat fee for Web Development" },
+    { id: "inv3", userId: "u_student2", courseId: "uiux", amount: 35000, paid: 0, currency: "PKR", status: "due", createdAt: "2026-09-01", method: "", note: "Seat fee for UI/UX" },
   ],
 };
 
@@ -112,6 +126,45 @@ function hydrateSitePhotos(site) {
     });
   });
   return next;
+}
+
+function ensureClassroomSeed(state) {
+  const take = (list, ids) => (list || []).filter((row) => ids.includes(row.id));
+  state.users ||= [];
+  for (const user of take(DEMO.users, ["u_student2"])) {
+    if (!state.users.some((u) => u.id === user.id || u.email.toLowerCase() === user.email.toLowerCase())) {
+      state.users.push(structuredClone(user));
+    }
+  }
+  state.enrollments ||= [];
+  for (const row of take(DEMO.enrollments, ["e3"])) {
+    if (!state.enrollments.some((e) => e.id === row.id || (e.userId === row.userId && e.courseId === row.courseId))) {
+      state.enrollments.push(structuredClone(row));
+    }
+  }
+  state.submissions ||= [];
+  for (const row of take(DEMO.submissions, ["s2", "s3", "s4", "s5"])) {
+    if (!state.submissions.some((s) => s.id === row.id)) state.submissions.push(structuredClone(row));
+  }
+  const waiting = state.submissions.find((s) => s.id === "s1");
+  if (waiting && waiting.note === "First pass of the evaluation report.") {
+    waiting.note = DEMO.submissions.find((s) => s.id === "s1").note;
+    waiting.feedback ||= "";
+  }
+  state.notifications ||= [];
+  for (const row of take(DEMO.notifications, ["n4", "n5", "n6"])) {
+    if (!state.notifications.some((n) => n.id === row.id)) state.notifications.push(structuredClone(row));
+  }
+  state.invoices ||= [];
+  for (const row of take(DEMO.invoices, ["inv3"])) {
+    if (!state.invoices.some((i) => i.id === row.id || (i.userId === row.userId && i.courseId === row.courseId && i.status !== "cancelled"))) {
+      state.invoices.push(structuredClone(row));
+    }
+  }
+  state.progress ||= {};
+  state.progress.u_student2 ||= { uiux: [1, 2, 3] };
+  state.freelanceKit ||= {};
+  state.freelanceKit.u_student2 ||= structuredClone(DEMO.freelanceKit.u_student2);
 }
 
 function ensureInvoices(state) {
@@ -174,6 +227,7 @@ function withDefaults(parsed) {
     merged.site.contact.address = DEFAULT_SITE.contact.address;
   }
   merged.invoices = Array.isArray(merged.invoices) ? merged.invoices : structuredClone(DEMO.invoices);
+  ensureClassroomSeed(merged);
   merged.applications = (merged.applications || []).map((a) => {
     const course = matchCourse(merged.courses, a.courseId || a.track);
     return {
@@ -199,7 +253,8 @@ function load() {
     if (raw) {
       const parsed = JSON.parse(raw);
       const next = withDefaults(parsed);
-      if (!parsed.site || !parsed.courses?.length || String(parsed.site?.hero?.image || "").startsWith("/photos/") || !Array.isArray(parsed.invoices)) save(next);
+      const missingSeed = !(parsed.submissions || []).some((s) => s.id === "s4");
+      if (missingSeed || !parsed.site || !parsed.courses?.length || String(parsed.site?.hero?.image || "").startsWith("/photos/") || !Array.isArray(parsed.invoices)) save(next);
       return next;
     }
   } catch {

@@ -5,6 +5,7 @@ import { PageHero } from "../components/CourseCard";
 
 const DEMOS = [
   ["student@hunarstack.com", "student123", "Student — Sara, enrolled in AI and Web"],
+  ["hira@hunarstack.com", "student123", "Student — Hira, design work in review"],
   ["instructor@hunarstack.com", "teach123", "Instructor — Amina, reviews submissions"],
   ["admin@hunarstack.com", "admin123", "Admin — users, applications, inbox"],
 ];
