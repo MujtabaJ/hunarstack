@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useData } from "../../context/DataContext";
 import { money } from "../../data/catalog";
@@ -8,6 +8,7 @@ export default function CatalogEditor() {
   const { courses, deleteCourse, setCoursePublished } = useData();
   const [q, setQ] = useState("");
   const [group, setGroup] = useState("all");
+  const [selectedId, setSelectedId] = useState("");
 
   const rows = useMemo(() => {
     const needle = q.trim().toLowerCase();
@@ -19,6 +20,12 @@ export default function CatalogEditor() {
       return `${c.name} ${c.blurb} ${c.id}`.toLowerCase().includes(needle);
     });
   }, [courses, q, group]);
+
+  useEffect(() => {
+    if (!rows.some((c) => c.id === selectedId)) setSelectedId(rows[0]?.id || "");
+  }, [rows, selectedId]);
+
+  const selected = rows.find((c) => c.id === selectedId) || null;
 
   function remove(course) {
     if (!confirm(`Delete “${course.name}”? Students enrolled in this track will lose it. Paid invoices stay on record.`)) return;
@@ -53,49 +60,59 @@ export default function CatalogEditor() {
         </select>
       </div>
 
-      <div className="table-wrap panel">
-        <table className="data">
-          <thead>
-            <tr>
-              <th>Course</th>
-              <th>Type</th>
-              <th>Duration</th>
-              <th>Fee</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((c) => (
-              <tr key={c.id}>
-                <td>
-                  <div className="course-cell">
-                    {hasPlatformLogo(c.id) ? <PlatformLogo id={c.id} size={28} /> : <span className="cell-icon">{c.icon}</span>}
-                    <div>
-                      <b>{c.name}</b><br />
-                      <small>{c.id}</small>
+      {rows.length === 0 && <p className="panel">No courses in this view.</p>}
+      {selected && (
+        <div className="pick-layout">
+          <aside className="panel pick-col">
+            <h2>Courses</h2>
+            <div className="pick-list" role="listbox" aria-label="Courses">
+              {rows.map((c) => (
+                <button key={c.id} type="button" className={`pick-item ${c.id === selected.id ? "is-on" : ""}`} onClick={() => setSelectedId(c.id)} aria-selected={c.id === selected.id}>
+                  <b>{hasPlatformLogo(c.id) ? c.name : `${c.icon} ${c.name}`}</b>
+                  <small>{c.group === "platform" ? "Platform" : "Skill"} · {c.published === false ? "Hidden" : "Live"}</small>
+                </button>
+              ))}
+            </div>
+          </aside>
+          <div className="panel">
+            <div className="dash-top">
+              <div>
+                <p className="kicker">{selected.group === "platform" ? "Platform" : "Skill track"}</p>
+                <h2>{hasPlatformLogo(selected.id) ? <PlatformLogo id={selected.id} size={28} /> : selected.icon} {selected.name}</h2>
+                <p>{selected.blurb}</p>
+              </div>
+              <span className={`role-pill ${selected.published === false ? "" : "admin"}`}>{selected.published === false ? "Hidden" : "Live"}</span>
+            </div>
+            <p><b>Duration.</b> {selected.duration || selected.meta?.[0] || "—"}</p>
+            <p><b>Fee.</b> {money(selected.fee, selected.currency)} / {selected.billing === "one-time" ? "one-time" : "cohort"}</p>
+            {selected.learn && <p><b>You will learn.</b> {selected.learn}</p>}
+            {selected.path && <p><b>Where it leads.</b> {selected.path}</p>}
+            {selected.tools && <p><b>Tools.</b> {selected.tools}</p>}
+            {selected.weeks?.length > 0 && (
+              <>
+                <h3>Weeks</h3>
+                <div className="queue-list">
+                  {selected.weeks.map((w) => (
+                    <div className="queue-row" key={w.week}>
+                      <div>
+                        <b>Week {w.week}: {w.title}</b>
+                        <p>{w.learn}</p>
+                      </div>
                     </div>
-                  </div>
-                </td>
-                <td>{c.group === "platform" ? "Platform" : "Skill"}</td>
-                <td>{c.duration || c.meta?.[0] || "—"}</td>
-                <td>{money(c.fee, c.currency)} <small>/{c.billing === "one-time" ? "one-time" : "cohort"}</small></td>
-                <td>{c.published === false ? "Hidden" : "Live"}</td>
-                <td>
-                  <p className="row-actions">
-                    <Link className="btn btn-ghost" to={`/app/catalog/${c.id}`}>Edit</Link>
-                    <button className="btn btn-ghost" type="button" onClick={() => setCoursePublished(c.id, c.published === false)}>
-                      {c.published === false ? "Publish" : "Hide"}
-                    </button>
-                    <button className="btn btn-danger" type="button" onClick={() => remove(c)}>Delete</button>
-                  </p>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        {rows.length === 0 && <p className="empty-panel">No courses in this view.</p>}
-      </div>
+                  ))}
+                </div>
+              </>
+            )}
+            <p className="btns" style={{ marginTop: 16 }}>
+              <Link className="btn btn-main" to={`/app/catalog/${selected.id}`}>Edit</Link>
+              <button className="btn btn-ghost" type="button" onClick={() => setCoursePublished(selected.id, selected.published === false)}>
+                {selected.published === false ? "Publish" : "Hide"}
+              </button>
+              <button className="btn btn-danger" type="button" onClick={() => remove(selected)}>Delete</button>
+            </p>
+          </div>
+        </div>
+      )}
     </>
   );
 }

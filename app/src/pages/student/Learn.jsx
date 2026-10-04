@@ -41,26 +41,40 @@ export default function Learn() {
   }
 
   const mine = submissions.filter((s) => s.userId === user.id && s.courseId === course.id);
+  const admin = user.role === "admin";
 
-  return (
+  const detail = (
     <>
       <div className="dash-top">
         <div>
           <p className="kicker">Learn</p>
           <h1>{course.icon} {course.name}</h1>
+          <p>{course.blurb}</p>
           <p>{weeks.length ? `${done.length} of ${weeks.length} weeks marked complete.` : "This track has no week plan yet. An admin can add weeks in Courses."}</p>
         </div>
       </div>
-      <div className="trail" style={{ marginBottom: 16 }}>
-        <Link className="btn btn-ghost" to="/app">← Dashboard</Link>
-        <Link className="btn btn-ghost" to="/courses">Change track</Link>
-      </div>
-      <div className="chip-row" style={{ marginBottom: 16 }}>
-        {tracks.map((e) => {
-          const c = getCourse(e.courseId);
-          return c ? <Link key={c.id} className={`btn ${c.id === course.id ? "btn-main" : "btn-ghost"}`} to={`/app/learn/${c.id}`}>{c.name}</Link> : null;
-        })}
-      </div>
+      {admin && (
+        <div className="panel">
+          <p><b>Duration.</b> {course.duration || course.meta?.[0] || "—"}</p>
+          {course.learn && <p><b>You will learn.</b> {course.learn}</p>}
+          {course.path && <p><b>Where it leads.</b> {course.path}</p>}
+          {course.tools && <p><b>Tools.</b> {course.tools}</p>}
+        </div>
+      )}
+      {!admin && (
+        <>
+          <div className="trail" style={{ marginBottom: 16 }}>
+            <Link className="btn btn-ghost" to="/app">← Dashboard</Link>
+            <Link className="btn btn-ghost" to="/courses">Change track</Link>
+          </div>
+          <div className="chip-row" style={{ marginBottom: 16 }}>
+            {tracks.map((e) => {
+              const c = getCourse(e.courseId);
+              return c ? <Link key={c.id} className={`btn ${c.id === course.id ? "btn-main" : "btn-ghost"}`} to={`/app/learn/${c.id}`}>{c.name}</Link> : null;
+            })}
+          </div>
+        </>
+      )}
       {weeks.length > 0 && (
         <>
           <div className="progress" style={{ marginBottom: 18 }}><span style={{ width: `${Math.round((done.length / Math.max(weeks.length, 1)) * 100)}%` }} /></div>
@@ -111,5 +125,28 @@ export default function Learn() {
         </div>
       </div>
     </>
+  );
+
+  if (!admin) return detail;
+
+  return (
+    <div className="pick-layout">
+      <aside className="panel pick-col">
+        <h2>Courses</h2>
+        <nav className="pick-list" aria-label="Courses">
+          {tracks.map((e) => {
+            const c = getCourse(e.courseId);
+            if (!c) return null;
+            return (
+              <Link key={c.id} className={`pick-item ${c.id === course.id ? "is-on" : ""}`} to={`/app/learn/${c.id}`}>
+                <b>{c.icon} {c.name}</b>
+                <small>{c.duration || c.meta?.[0] || "Course"}</small>
+              </Link>
+            );
+          })}
+        </nav>
+      </aside>
+      <div>{detail}</div>
+    </div>
   );
 }

@@ -120,6 +120,38 @@
   gap: 16px;
   align-items: start;
 }
+.pick-layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+.pick-col { position: sticky; top: 16px; }
+.pick-list {
+  display: grid;
+  gap: 8px;
+  max-height: calc(100svh - 180px);
+  overflow: auto;
+  margin: 0;
+  padding-right: 4px;
+}
+.pick-item {
+  display: grid;
+  gap: 2px;
+  width: 100%;
+  text-align: left;
+  text-decoration: none;
+  color: inherit;
+  background: #f7fbff;
+  border: 1px solid rgba(59, 154, 250, .14);
+  border-radius: 14px;
+  padding: 12px 14px;
+  font: inherit;
+  cursor: pointer;
+}
+.pick-item small { color: #3a4560; }
+.pick-item.is-on, .pick-item:hover { border-color: #3b9afa; background: #fff; }
+.pick-item.is-on { box-shadow: 0 8px 20px rgba(59, 154, 250, .12); }
 .shortcut-list { display: grid; gap: 8px; margin: 0; }
 .shortcut-list a {
   display: flex;
@@ -361,7 +393,9 @@ table.data td:last-child { white-space: nowrap; }
   .side nav { display: flex; flex-wrap: wrap; }
   .side .grow { margin: 0; width: 100%; }
   .stat-grid { grid-template-columns: 1fr 1fr; }
-  .dash-split { grid-template-columns: 1fr; }
+  .dash-split, .pick-layout { grid-template-columns: 1fr; }
+  .pick-col { position: static; }
+  .pick-list { max-height: 320px; }
   .dash { padding: 20px 18px 48px; }
   .week-item { grid-template-columns: 1fr; }
 }
