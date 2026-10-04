@@ -316,6 +316,14 @@
 .hs-quote {
   border: 1px dashed #cbd5e1; background: #fff;
 }
+.hs-quote.is-sample { border-style: solid; border-color: var(--hs-line); }
+.hs-quote .hs-kicker { margin-bottom: 8px; }
+.hs-story-mark {
+  width: 72px; height: 72px; border-radius: 18px; margin-bottom: 10px;
+  display: grid; place-items: center;
+  background: #eff6ff; color: #1d4ed8;
+  font: 800 1.15rem/1 Manrope, sans-serif; letter-spacing: .04em;
+}
 .hs-quote blockquote { margin: 0 0 8px; font: 700 1.05rem/1.45 Manrope, sans-serif; }
 .hs-ph { color: #64748b; font-size: .92rem; }
 

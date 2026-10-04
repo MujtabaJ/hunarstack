@@ -30,26 +30,25 @@ export default function Stories() {
   return (
     <>
       <Seo
-        title="Success Stories | HunarStack"
-        description="Student stories at HunarStack. Testimonials are published only when students share them. Placeholders are marked clearly."
+        title="Classroom Stories | HunarStack"
+        description="Classroom samples for Sara Ali, Hassan Raza and Amina Khan. These follow the demo class records and are not published testimonials."
         path="/stories"
       />
       <header className="hs-hero-mini">
         <div className="hs-wrap">
           <p className="hs-crumbs"><Link to="/">Home</Link> <span>/</span> <span>Success Stories</span></p>
-          <p className="hs-kicker">Success stories</p>
-          <h1>Real students. Real words. When they are ready.</h1>
-          <p className="hs-lead">HunarStack does not write fake reviews. The cards below are empty on purpose until a student submits a story.</p>
+          <p className="hs-kicker">Classroom stories</p>
+          <h1>Sara, Hassan and Amina.</h1>
+          <p className="hs-lead">These three cards follow the demo class. Sara is enrolled. Hassan has applied and is waiting for a seat. Amina teaches Web and UI/UX and reviews the practice work. They are classroom samples, not published testimonials.</p>
         </div>
       </header>
       <main id="main" className="hs-page">
         <div className="hs-wrap" style={{ display: "grid", gap: 22 }}>
           <div className="hs-grid-3">
             {TESTIMONIALS.map((t) => (
-              <article className="hs-card hs-quote" key={t.id}>
-                <div className="hs-portrait" style={{ width: 72, height: 72, borderRadius: 18, marginBottom: 10 }}>
-                  <div style={{ width: 72, height: 72, background: "#e2e8f0" }} aria-hidden="true" />
-                </div>
+              <article className={`hs-card hs-quote${t.sample ? " is-sample" : ""}`} key={t.id}>
+                <div className="hs-story-mark" aria-hidden="true">{t.name.split(" ").map((part) => part[0]).join("")}</div>
+                <p className="hs-kicker">{t.role}</p>
                 <blockquote>“{t.quote}”</blockquote>
                 <p><b>Name:</b> {t.name}</p>
                 <p><b>City:</b> {t.city}</p>
@@ -57,7 +56,7 @@ export default function Stories() {
                 <p><b>Before:</b> {t.before}</p>
                 <p><b>After:</b> {t.after}</p>
                 <p><b>Project:</b> {t.project}</p>
-                <p className="hs-ph">Placeholder. Not a testimonial.</p>
+                {t.sample && <p className="hs-ph">Classroom sample. Not a published testimonial.</p>}
               </article>
             ))}
           </div>

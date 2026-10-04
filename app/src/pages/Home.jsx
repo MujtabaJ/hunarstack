@@ -318,20 +318,23 @@ export default function Home() {
         <div className="hs-wrap">
           <div className="hs-head">
             <div>
-              <p className="hs-kicker">Success stories</p>
-              <h2>Student stories will live here.</h2>
-              <p>We do not invent testimonials. When a student shares a real story, it will replace these placeholders.</p>
+              <p className="hs-kicker">Classroom stories</p>
+              <h2>Sara, Hassan and Amina, from the demo class.</h2>
+              <p>These cards follow the classroom records: enrolments, submissions and one pending application. They are samples, not published testimonials, and they are not a promise of work or income.</p>
             </div>
             <Link className="hs-btn hs-btn-ghost" to="/stories">Submit Your Story</Link>
           </div>
           <div className="hs-grid-3">
             {TESTIMONIALS.map((story) => (
-              <article className="hs-card hs-quote" key={story.id}>
+              <article className={`hs-card hs-quote${story.sample ? " is-sample" : ""}`} key={story.id}>
+                <p className="hs-kicker">{story.role}</p>
                 <blockquote>“{story.quote}”</blockquote>
-                <p className="hs-ph">{story.name} · {story.city} · {story.course}</p>
+                <p><b>{story.name}</b> · {story.city}</p>
+                <p>{story.course}</p>
                 <p><b>Before:</b> {story.before}</p>
                 <p><b>After:</b> {story.after}</p>
                 <p><b>Project:</b> {story.project}</p>
+                {story.sample && <p className="hs-ph">Classroom sample. Not a published testimonial.</p>}
               </article>
             ))}
           </div>
