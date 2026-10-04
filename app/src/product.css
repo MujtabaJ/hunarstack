@@ -123,10 +123,34 @@
 .pick-layout {
   display: grid;
   grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
-  gap: 16px;
-  align-items: start;
+  gap: 0;
+  align-items: stretch;
+  background: #fff;
+  border: 1px solid rgba(59, 154, 250, .12);
+  border-radius: 20px;
+  overflow: hidden;
 }
-.pick-col { position: sticky; top: 16px; }
+.pick-layout > .panel,
+.pick-layout > .pick-detail {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  min-width: 0;
+}
+.pick-layout > .pick-detail { padding: 18px 20px 22px; }
+.pick-col {
+  position: sticky;
+  top: 16px;
+  align-self: start;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  border-right: 1px solid rgba(59, 154, 250, .12);
+  box-shadow: none;
+  background: #f8fbff;
+}
 .pick-list {
   display: grid;
   gap: 8px;
@@ -394,7 +418,7 @@ table.data td:last-child { white-space: nowrap; }
   .side .grow { margin: 0; width: 100%; }
   .stat-grid { grid-template-columns: 1fr 1fr; }
   .dash-split, .pick-layout { grid-template-columns: 1fr; }
-  .pick-col { position: static; }
+  .pick-col { position: static; border-right: 0; border-bottom: 1px solid rgba(59, 154, 250, .12); }
   .pick-list { max-height: 320px; }
   .dash { padding: 20px 18px 48px; }
   .week-item { grid-template-columns: 1fr; }

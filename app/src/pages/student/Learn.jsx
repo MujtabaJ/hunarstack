@@ -146,7 +146,7 @@ export default function Learn() {
           })}
         </nav>
       </aside>
-      <div>{detail}</div>
+      <div className="pick-detail">{detail}</div>
     </div>
   );
 }

@@ -74,7 +74,7 @@ export default function CatalogEditor() {
               ))}
             </div>
           </aside>
-          <div className="panel">
+          <div className="panel pick-detail">
             <div className="dash-top">
               <div>
                 <p className="kicker">{selected.group === "platform" ? "Platform" : "Skill track"}</p>
